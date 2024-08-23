@@ -1,0 +1,723 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            // Create a fade-in effect by manipulating a wrapper div
+            const wrapper = document.createElement('div');
+            wrapper.style.position = 'fixed';
+            wrapper.style.top = '0';
+            wrapper.style.left = '0';
+            wrapper.style.width = '100%';
+            wrapper.style.height = '100%';
+            wrapper.style.background = getComputedStyle(document.body).background;
+            wrapper.style.opacity = '0';
+            wrapper.style.transition = 'opacity .5s ease';
+            wrapper.style.zIndex = '9999'; // Ensure it covers the entire page
+        
+            document.body.appendChild(wrapper);
+        
+            // Fade in the wrapper
+            setTimeout(function() {
+                wrapper.style.opacity = '1';
+            }, 100);
+        
+            // Fade out the wrapper after the transition
+            setTimeout(function() {
+                wrapper.style.opacity = '0';
+                // Remove the wrapper from the DOM after fading out
+                setTimeout(function() {
+                    document.body.removeChild(wrapper);
+                }, 1000); // Match the fade-out duration
+            }, 1000); // Duration of the fade-in effect
+        });
+        
+        
+        </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scroll-Driven Image Carousel</title>
+    <style>
+        body {
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        transition: background-image .5s ease;
+        }
+
+        .carousel-container {
+            width: 20%;
+            overflow-x: scroll;
+            scroll-snap-type: x mandatory;
+            scrollbar-width: none; /* Hide scrollbar for Firefox */
+            -ms-overflow-style: none;  /* Hide scrollbar for IE and Edge */
+            position: relative;
+            padding: 20px 0;
+            scroll-behavior: smooth;
+        }
+
+        .carousel-container::-webkit-scrollbar {
+            display: none; /* Hide scrollbar for Chrome, Safari, and Opera */
+            scroll-behavior: smooth;
+        }
+
+        .carousel-track {
+   display: grid;
+  row-gap: 10px;
+  column-gap: 100px;
+            padding: 10px;
+            z-index: 1;
+            scroll-behavior: smooth;
+        }
+
+        .carousel-track img {
+            width: 10%;
+            max-width: 400px;
+            height: auto;
+            scroll-snap-align: center;
+            object-fit: cover;
+            margin: 0 15px;
+            border-radius: 15px;
+            transition: transform 0.2s ease, filter 0.3s ease;
+            scroll-behavior: smooth;
+            display: flexbox;
+    
+            /* From https://css.glass */
+background: rgba(255, 255, 255, 0.08);
+border-radius: 16px;
+box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+backdrop-filter: blur(1.5px);
+-webkit-backdrop-filter: blur(1.5px);
+padding: 4px;
+        }
+
+        .carousel-track img:hover {
+            transform: scale(1.2);
+            filter: brightness(1.2);
+        }
+
+        /* Add blurring, dimming, and depth effects */
+        .carousel-container::before,
+        .carousel-container::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            width: 100px;
+            z-index: 2;
+            pointer-events: none;
+            scroll-behavior: smooth;
+        
+        }
+        /* Depth effect by adding shadow */
+        .carousel-track img {
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.7);
+        }
+        #image-tile{
+            width: 60px;
+            height: 60px;
+            margin: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="carousel-container" id="carousel">
+        <div class="carousel-track">
+            <a href="https://www.chatgpt.com" target="_blank"><img id="image-tile" src="C:\Users\surya\OneDrive\ONE DRIVE\Desktop\WEB\ICONS\chatgpt.png" alt="Image 1"></a>
+            <a href="https://web.whatsapp.com/" target="_blank"><img id="image-tile" src="C:\Users\surya\OneDrive\ONE DRIVE\Desktop\WEB\ICONS\wa.png" alt="Image 1"></a>
+            <a href="https://www.github.com" target="_blank"><img id="image-tile" src="C:\Users\surya\OneDrive\ONE DRIVE\Desktop\WEB\ICONS\gh.png" alt="Image 1"></a>
+            <a href="https://www.notion.com" target="_blank"><img id="image-tile" src="C:\Users\surya\OneDrive\ONE DRIVE\Desktop\WEB\ICONS\notion.png" alt="Image 1"></a>
+            <a href="https://www.youtube.com" target="_blank"><img id="image-tile" src="C:\Users\surya\OneDrive\ONE DRIVE\Desktop\WEB\ICONS\youtube.png" alt="Image 1"></a>
+            <a href="https://www.google.com" target="_blank"><img id="image-tile" src="C:\Users\surya\OneDrive\ONE DRIVE\Desktop\WEB\ICONS\google.png" alt="Image 1"></a>
+            <a href="https://www.reddit.com" target="_blank"><img id="image-tile" src="C:\Users\surya\OneDrive\ONE DRIVE\Desktop\WEB\ICONS\reddit.png" alt="Image 1"></a>
+            <a href="https://www.freecodecamp.com" target="_blank"><img id="image-tile" src="C:\Users\surya\OneDrive\ONE DRIVE\Desktop\WEB\ICONS\fcc.png" alt="Image 1"></a>
+            <a href="https://gemini.google.com/app" target="_blank"><img id="image-tile" src="C:\Users\surya\OneDrive\ONE DRIVE\Desktop\WEB\ICONS\baard.png" alt="Image 1"></a>
+            <a href="https://www.linkedin.com" target="_blank"><img id="image-tile" src="C:\Users\surya\OneDrive\ONE DRIVE\Desktop\WEB\ICONS\linkedin.png" alt="Image 1"></a>
+            <a href="https://www.leetcode.com" target="_blank"><img id="image-tile" src="C:\Users\surya\OneDrive\ONE DRIVE\Desktop\WEB\ICONS\lc.png" alt="Image 1"></a>
+            <a href="https://music.youtube.com/" target="_blank"><img id="image-tile" src="C:\Users\surya\OneDrive\ONE DRIVE\Desktop\WEB\ICONS\ytmusic.png" alt="Image 1"></a>
+            <a href="https://vscode.dev/" target="_blank"><img id="image-tile" src="C:\Users\surya\OneDrive\ONE DRIVE\Desktop\WEB\ICONS\vs.png" alt="Image 1"></a>
+            <a href="https://www.replit.com" target="_blank"><img id="image-tile" src="C:\Users\surya\OneDrive\ONE DRIVE\Desktop\WEB\ICONS\replit.png  " alt="Image 1"></a>
+            <a href="https://excalidraw.com/" target="_blank"><img id="image-tile" src="C:\Users\surya\OneDrive\ONE DRIVE\Desktop\WEB\ICONS\ex.png" alt="Image 1"></a>
+            <a href="https://drive.google.com/drive/home" target="_blank"><img id="image-tile" src="C:\Users\surya\OneDrive\ONE DRIVE\Desktop\WEB\ICONS\drive.png" alt="Image 1"></a>
+            <a href="https://photos.google.com/" target="_blank"><img id="image-tile" src="C:\Users\surya\OneDrive\ONE DRIVE\Desktop\WEB\ICONS\gp.png" alt="Image 1"></a>
+            <a href="https://keep.google.com/" target="_blank"><img id="image-tile" src="C:\Users\surya\OneDrive\ONE DRIVE\Desktop\WEB\ICONS\keepnote.png" alt="Image 1"></a>
+            <a href="https://mail.google.com/mail/u/0/#inbox" target="_blank"><img id="image-tile" src="C:\Users\surya\OneDrive\ONE DRIVE\Desktop\WEB\ICONS\gmail.png" alt="Image 1"></a>
+            <a href="https://www.google.com/maps" target="_blank"><img id="image-tile" src="C:\Users\surya\OneDrive\ONE DRIVE\Desktop\WEB\ICONS\maps.png" alt="Image 1"></a>
+            <a href="https://libgen.is/" target="_blank"><img id="image-tile" src="C:\Users\surya\OneDrive\ONE DRIVE\Desktop\WEB\ICONS\lg.png" alt="Image 1"></a>
+            <a href="https://wallhaven.cc/" target="_blank"><img id="image-tile" src="C:\Users\surya\OneDrive\ONE DRIVE\Desktop\WEB\ICONS\wh.png" alt="Image 1"></a>
+        </div>
+    </div>
+
+    <script>
+        // Optional: Auto-scroll functionality
+        const carousel = document.getElementById('carousel');
+        const scrollSpeed = 2; // Adjust the scroll speed
+
+        let scrollInterval;
+
+        const startAutoScroll = () => {
+            scrollInterval = setInterval(() => {
+                carousel.scrollLeft += scrollSpeed;
+                if (carousel.scrollLeft + carousel.clientWidth >= carousel.scrollWidth) {
+                    carousel.scrollLeft = 0;
+                }
+            }, 20);
+        };
+
+        const stopAutoScroll = () => clearInterval(scrollInterval);
+
+        carousel.addEventListener('mouseenter', stopAutoScroll);
+        carousel.addEventListener('mouseleave', startAutoScroll);
+
+        // Start auto-scroll on page load
+        startAutoScroll();
+    </script>
+</body>
+</html>
+
+<style>
+    .con {
+        position: absolute;
+        text-align: right;
+        right: 1%;
+        padding: 10px;
+        bottom: 10%;
+        font-family: "Quicksand", sans-serif;
+        color: white;
+    }
+    .time {
+        font-size: 48px;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        margin-bottom: 10px;
+    }
+    .date {
+        font-size: 24px;
+        text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+    }
+</style>
+
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap');
+    </style>
+</head>
+<body>
+<div class="con">
+    <div class="time" id="time"></div>
+    <div class="date" id="date"></div>
+</div>
+
+<script>
+    function updateTimeAndDate() {
+        const now = new Date();
+        let hours = now.getHours();
+        const minutes = now.getMinutes();
+        const ampm = hours >= 12 ? 'PM' : 'AM';
+
+        hours = hours % 12;
+        hours = hours ? hours : 12; // If hour is 0, set it to 12 (midnight)
+        const minutesFormatted = minutes < 10 ? '0' + minutes : minutes;
+
+        const timeString = `${hours}:${minutesFormatted} ${ampm}`;
+        document.getElementById('time').textContent = timeString;
+
+        const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+        const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+        
+        const day = now.getDate();
+        const dayName = days[now.getDay()];
+        const monthName = months[now.getMonth()];
+        const year = now.getFullYear();
+
+        const dateString = `${day} ${dayName}<br>${monthName} ${year}`;
+        document.getElementById('date').innerHTML = dateString;
+    }
+
+    setInterval(updateTimeAndDate, 1000); // Update time and date every second
+    updateTimeAndDate(); // Initial call to set the time and date immediately
+</script>
+</body>
+</html>
+
+    <style>
+
+        #shortcuts-popup {
+            display: none;
+            position: fixed;
+            top: 20%;
+            left: 50%;
+            transform: translateX(-50%);
+            padding: 20px;
+            background: #333;
+            color: #fff;
+            border-radius: 5px;
+            z-index: 1000;
+        }
+
+        #shortcuts-popup button {
+            background: #444;
+            color: #fff;
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        #shortcuts-popup button:hover {
+            background: #555;
+        }
+    </style>
+</head>
+<body>
+
+
+
+
+
+
+
+
+
+
+<img id="spotifyIcon" alt="Spotify Icon" class="icon" src="file:///C:/Users/surya/OneDrive/ONE%20DRIVE/Desktop/WEB/ICONS/spotify.png" style="height: 35px; width: 35px; position :absolute; bottom: 5%; right: 1.4%; transition: .5s ease;">
+  
+    <div id="spotify_iframe" class="spoty">
+      <button id="closeSpotify" class="close-button">&times;</button>
+      <iframe id="spoty" src="https://open.spotify.com/embed/playlist/37i9dQZF1E363HUxN3rZko?utm_source=generator&theme=0" height="400px" width=400px" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+  </div>
+  </div>
+
+  
+  <style>
+    .spoty {
+        position: fixed;
+        left: 75%;
+        top: 24.5%;
+           width: 100%;
+           background-color: transparent;
+           border-radius: 12px;
+           box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+           opacity: 0;
+           visibility: hidden;
+           transition: opacity .5s ease, visibility 0.5s ease;
+       }
+   
+       .spoty.open {
+           opacity: 1;
+           visibility: visible;
+           z-index: 9; /* Bring to highest z-index when open */
+       }
+   
+       #closeSpotify {
+        position: absolute;
+        left: 19.5%;
+        top: 3.4%;
+           scale: 1.05;
+           background: none;
+           border: none;
+           font-size: 24px;
+           cursor: pointer;
+           z-index: 9;
+           color: #888;
+  
+       }
+       #closeSpotify:hover{
+        animation: rota 1s ease;
+        scale: 1.1;
+       }
+       @keyframes rota {
+        from{       transform: rotate(360deg);      }
+        to{       transform: rotate(0deg);      }
+       }
+   
+       .icon {
+           cursor: pointer;
+       }
+   </style>
+   </head>
+   <body>
+  
+  
+   </div>
+
+   
+   <script>
+   document.addEventListener('DOMContentLoaded', function() {
+       const spotifyIcon = document.getElementById('spotifyIcon');
+       const spotify_iframe = document.getElementById('spotify_iframe');
+       const closeSpotify = document.getElementById('closeSpotify');
+   
+       // Event listener for Spotify icon click
+       spotifyIcon.addEventListener('click', function() {
+           spotify_iframe.classList.toggle('open');
+       });
+   
+       // Event listener for close button
+       closeSpotify.addEventListener('click', function() {
+           spotify_iframe.classList.remove('open');
+       });
+   });
+   </script>
+   
+   </body>
+   </html>
+
+
+
+
+
+
+
+
+
+
+
+
+   <style>
+    body {
+        margin: 0;
+        padding: 0;
+        height: 100vh;
+        background-size: cover;
+        background-position: center;
+        background-color: black; /* Fallback color */
+        transition: background-image .5s ease;
+    }
+    .container {
+        display: flex;
+        justify-content: center;
+        align-items: center;        
+        position: relative;
+    }
+    .button {
+        cursor: pointer;
+        transition: 0.5s ease;
+        position: fixed;
+        right: 5%;
+        bottom: 5%;
+        height: 35px;
+        width: 35px;
+    }
+    .button:hover {
+        scale: 1.1;
+        transform: rotate(90deg);
+    }
+    #saveButton {
+        display: none;
+        cursor: pointer;
+        position: fixed;
+        right: 9%;
+        bottom: 12%;
+        transition: 0.5s ease;
+        height: 35px;
+        width: 35px;
+    }
+    .icon{
+        transition: background-image .5s ease;
+
+    }
+    #saveButton:hover {
+        scale: 1.1;
+        transform: translateY(-10px);
+    }
+    .icon:hover {
+        scale: 1.1;
+        transform: rotate(180deg);
+    }
+</style>
+</head>
+<body>
+<div class="container">
+<img class="button" onclick="document.getElementById('fileInput').click();" src="file:///C:/Users/surya/OneDrive/ONE%20DRIVE/Desktop/WEB/ICONS/gg.png">
+
+<img id="saveButton" onclick="saveBackground()" src="file:///C:/Users/surya/OneDrive/ONE%20DRIVE/Desktop/WEB/ICONS/save.png">
+
+</div>
+
+<input type="file" id="fileInput" style="display: none;" accept="image/*" onchange="previewBackgroundImage(event)">
+
+<script>
+    let tempImageUrl = '';
+
+    // Function to set the background image from local storage
+    function setStoredBackground() {
+        const bgImage = localStorage.getItem('bgImage');
+        if (bgImage) {
+            document.body.style.backgroundImage = `url('${bgImage}')`;
+            console.log('Background image set from local storage:', bgImage);
+        } else {
+            console.log('No background image found in local storage.');
+        }
+    }
+
+    // Function to preview the selected image and show the save button
+    function previewBackgroundImage(event) {
+        const file = event.target.files[0];
+        if (file) {
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                tempImageUrl = e.target.result;
+                // Update the background image preview
+                document.body.style.backgroundImage = `url('${tempImageUrl}')`;
+                // Show the save button
+                document.getElementById('saveButton').style.display = 'block';
+                console.log('Image preview:', tempImageUrl);
+            };
+            reader.readAsDataURL(file);
+        } else {
+            console.error('No file selected.');
+        }
+    }
+
+    // Function to save the background image
+    function saveBackground() {
+        if (tempImageUrl) {
+            try {
+                // Store the image URL in local storage
+                localStorage.setItem('bgImage', tempImageUrl);
+                // Update the background image immediately
+                document.body.style.backgroundImage = `url('${tempImageUrl}')`;
+                // Hide the save button
+                document.getElementById('saveButton').style.display = 'none';
+                console.log('Background image URL stored in local storage:', tempImageUrl);
+            } catch (e) {
+                console.error('Failed to save background image:', e);
+            }
+        } else {
+            console.error('No image URL to save.');
+        }
+    }
+
+    // Initialize background image on page load
+    window.onload = setStoredBackground;
+</script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<style>
+    .container {
+                text-align: center;
+                position: fixed;
+                top: 2%;
+                right: 30%;
+                transition: .5s ease;
+            }
+            #addShortcutBtn {
+                font-size: 2rem;
+                border: none;
+                cursor: pointer;
+                border-radius: 5px;
+                height: 32px;
+                width: 30px;
+                transition: .5s ease;
+                position: fixed;
+                scale: .8;
+                right: 9%;
+                bottom: 5%;
+                height: 35px;
+                width: 35px;
+                transition: .5s ease;
+            }
+            #addShortcutBtn:hover{
+                transform: rotate(180deg);
+            }
+            .tiles-container {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 10px;
+                transition: .5s ease;
+                justify-content: center;
+                position: fixed;
+                bottom: 5%;
+                right: 15%;
+            }   
+            .tile {
+               border-radius: 10px;
+                width: 80px;
+                height: 50px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                position: absolute;
+                transition: .5s ease;
+                position: relative;
+                overflow: hidden;
+                transition: background-color 0.3s;
+            }
+            .tile {
+            /* From https://css.glass */
+border-radius: 16px;
+                transition: .5s ease;
+                box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+backdrop-filter: blur(1.5px);
+-webkit-backdrop-filter: blur(1.5px);
+padding: 4px;            }
+            .tile a {
+                display: block;
+                width: 100%;
+                height: 100%;
+
+                transition: .5s ease;
+                /* From https://css.glass */
+background: rgba(255, 255, 255, 0.08);
+border-radius: 16px;
+box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+backdrop-filter: blur(1.5px);
+-webkit-backdrop-filter: blur(1.5px);
+padding: 4px;
+font-family: "Quicksand", sans-serif;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                padding: 10px;
+                box-sizing: border-box;
+            }
+            .tile span {
+                font-size: 1rem;
+                white-space: nowrap;
+                transition: .5s ease;
+                overflow: hidden;
+                text-overflow: ellipsis;
+            }
+            a{
+                color: white;
+                text-decoration: none;
+            }
+            .actions {
+                display: flex;
+                transition: .5s ease;
+                gap: 5px;
+                position: absolute;
+                top: 10px;
+                right: 10px;
+                opacity: 0;
+                transition: opacity 0.3s;
+            }
+            .actions img {
+                width: 14px;
+                height: 14px;
+                cursor: pointer;
+                transition: .5s ease;
+                border: none;
+            }
+            .actions img:hover {
+                transition: .5s ease;
+                opacity: 0.8;
+            }
+            .tile:hover .actions {
+                transition: .5s ease;
+                opacity: 1;
+            }
+        </style>
+        <div class="container">
+            <button id="addShortcutBtn">+</button>
+            <div id="tilesContainer" class="tiles-container"></div>
+        </div>
+        <script>
+            document.getElementById('addShortcutBtn').addEventListener('click', () => {
+                let url = prompt('Enter the URL (include http:// or https://):').trim();
+                const name = prompt('Enter the shortcut name:').trim();
+    
+                // Ensure URL starts with http:// or https://
+                if (url && !url.startsWith('http://') && !url.startsWith('https://')) {
+                    url = `http://${url}`;
+                }
+    
+                if (url && name) {
+                    const shortcuts = JSON.parse(localStorage.getItem('shortcuts')) || [];
+                    shortcuts.push({ url, name });
+                    localStorage.setItem('shortcuts', JSON.stringify(shortcuts));
+                    renderTiles();
+                } else {
+                    alert('Both URL and name are required.');
+                }
+            });
+    
+            function renderTiles() {
+                const tilesContainer = document.getElementById('tilesContainer');
+                tilesContainer.innerHTML = '';
+    
+                const shortcuts = JSON.parse(localStorage.getItem('shortcuts')) || [];
+                shortcuts.forEach((shortcut, index) => {
+                    const tile = document.createElement('div');
+                    tile.classList.add('tile');
+    
+                    const anchor = document.createElement('a');
+                    anchor.href = shortcut.url;
+                    anchor.target = '_blank';
+                    anchor.rel = 'noopener noreferrer';
+    
+                    const span = document.createElement('span');
+                    span.textContent = shortcut.name;
+    
+                    anchor.appendChild(span);
+                    tile.appendChild(anchor);
+    
+                    const actions = document.createElement('div');
+                    actions.classList.add('actions');
+    
+                    const editButton = document.createElement('img');
+                    editButton.src = 'file:///C:/Users/surya/OneDrive/ONE%20DRIVE/Desktop/WEB/ICONS/edit.png'; // Replace with your edit icon URL
+                    editButton.alt = 'Edit';
+                    editButton.addEventListener('click', (event) => {
+                        event.stopPropagation();
+                        const newUrl = prompt('Enter the new URL (include http:// or https://):', shortcut.url).trim();
+                        const newName = prompt('Enter the new shortcut name:', shortcut.name).trim();
+    
+                        // Ensure new URL starts with http:// or https://
+                        if (newUrl && !newUrl.startsWith('http://') && !newUrl.startsWith('https://')) {
+                            newUrl = `http://${newUrl}`;
+                        }
+    
+                        if (newUrl && newName) {
+                            shortcut.url = newUrl;
+                            shortcut.name = newName;
+                            shortcuts[index] = shortcut;
+                            localStorage.setItem('shortcuts', JSON.stringify(shortcuts));
+                            renderTiles();
+                        } else {
+                            alert('Both URL and name are required.');
+                        }
+                    });
+    
+                    const deleteButton = document.createElement('img');
+                    deleteButton.src = 'file:///C:/Users/surya/OneDrive/ONE%20DRIVE/Desktop/WEB/ICONS/delete.png'; // Replace with your delete icon URL
+                    deleteButton.alt = 'Delete';
+                    deleteButton.addEventListener('click', (event) => {
+                        event.stopPropagation();
+                        shortcuts.splice(index, 1);
+                        localStorage.setItem('shortcuts', JSON.stringify(shortcuts));
+                        renderTiles();
+                    });
+    
+                    actions.appendChild(editButton);
+                    actions.appendChild(deleteButton);
+                    tile.appendChild(actions);
+                    tilesContainer.appendChild(tile);
+                });
+            }
+    
+            // Render tiles on initial load
+            renderTiles();
+        </script>

@@ -1,0 +1,168 @@
+<style>
+.container {
+            text-align: center;
+        }
+        #addShortcutBtn {
+            font-size: 2rem;
+            padding: 10px;
+            background-color: #007bff;
+            border: none;
+            color: #fff;
+            cursor: pointer;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+        .tiles-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            justify-content: center;
+        }
+        .tile {
+            background-color: #333;
+            border-radius: 10px;
+            width: 150px;
+            height: 100px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            transition: background-color 0.3s;
+        }
+        .tile:hover {
+            background-color: #444;
+        }
+        .tile a {
+            display: block;
+            width: 100%;
+            height: 100%;
+            text-decoration: none;
+            color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 10px;
+            box-sizing: border-box;
+        }
+        .tile span {
+            font-size: 1rem;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        .actions {
+            display: flex;
+            gap: 5px;
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+        .actions img {
+            width: 20px;
+            height: 20px;
+            cursor: pointer;
+            border: none;
+            transition: opacity 0.3s;
+        }
+        .actions img:hover {
+            opacity: 0.8;
+        }
+        .tile:hover .actions {
+            opacity: 1;
+        }
+    </style>
+    <div class="container">
+        <button id="addShortcutBtn">+</button>
+        <div id="tilesContainer" class="tiles-container"></div>
+    </div>
+    <script>
+        document.getElementById('addShortcutBtn').addEventListener('click', () => {
+            let url = prompt('Enter the URL (include http:// or https://):').trim();
+            const name = prompt('Enter the shortcut name:').trim();
+
+            // Ensure URL starts with http:// or https://
+            if (url && !url.startsWith('http://') && !url.startsWith('https://')) {
+                url = `http://${url}`;
+            }
+
+            if (url && name) {
+                const shortcuts = JSON.parse(localStorage.getItem('shortcuts')) || [];
+                shortcuts.push({ url, name });
+                localStorage.setItem('shortcuts', JSON.stringify(shortcuts));
+                renderTiles();
+            } else {
+                alert('Both URL and name are required.');
+            }
+        });
+
+        function renderTiles() {
+            const tilesContainer = document.getElementById('tilesContainer');
+            tilesContainer.innerHTML = '';
+
+            const shortcuts = JSON.parse(localStorage.getItem('shortcuts')) || [];
+            shortcuts.forEach((shortcut, index) => {
+                const tile = document.createElement('div');
+                tile.classList.add('tile');
+
+                const anchor = document.createElement('a');
+                anchor.href = shortcut.url;
+                anchor.target = '_blank';
+                anchor.rel = 'noopener noreferrer';
+
+                const span = document.createElement('span');
+                span.textContent = shortcut.name;
+
+                anchor.appendChild(span);
+                tile.appendChild(anchor);
+
+                const actions = document.createElement('div');
+                actions.classList.add('actions');
+
+                const editButton = document.createElement('img');
+                editButton.src = 'https://via.placeholder.com/20'; // Replace with your edit icon URL
+                editButton.alt = 'Edit';
+                editButton.addEventListener('click', (event) => {
+                    event.stopPropagation();
+                    const newUrl = prompt('Enter the new URL (include http:// or https://):', shortcut.url).trim();
+                    const newName = prompt('Enter the new shortcut name:', shortcut.name).trim();
+
+                    // Ensure new URL starts with http:// or https://
+                    if (newUrl && !newUrl.startsWith('http://') && !newUrl.startsWith('https://')) {
+                        newUrl = `http://${newUrl}`;
+                    }
+
+                    if (newUrl && newName) {
+                        shortcut.url = newUrl;
+                        shortcut.name = newName;
+                        shortcuts[index] = shortcut;
+                        localStorage.setItem('shortcuts', JSON.stringify(shortcuts));
+                        renderTiles();
+                    } else {
+                        alert('Both URL and name are required.');
+                    }
+                });
+
+                const deleteButton = document.createElement('img');
+                deleteButton.src = 'https://via.placeholder.com/20'; // Replace with your delete icon URL
+                deleteButton.alt = 'Delete';
+                deleteButton.addEventListener('click', (event) => {
+                    event.stopPropagation();
+                    shortcuts.splice(index, 1);
+                    localStorage.setItem('shortcuts', JSON.stringify(shortcuts));
+                    renderTiles();
+                });
+
+                actions.appendChild(editButton);
+                actions.appendChild(deleteButton);
+                tile.appendChild(actions);
+                tilesContainer.appendChild(tile);
+            });
+        }
+
+        // Render tiles on initial load
+        renderTiles();
+    </script>
