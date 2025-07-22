@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>App Menu With Lock Screen</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500&amp;display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./style.css">
+
+</head>
+
+<body cz-shortcut-listen="true">
+    <!-- partial:index.partial.html -->
+    <div id="root">
+        <div id="app" class="logged-in">
+            <div id="app-info" class="info"><span class="time">2:38</span><span class="weather"><i class="fa-duotone fa-sun" aria-hidden="true"></i><span class="weather-temperature-value">66</span><span class="weather-temperature-unit">°F</span></span>
+            </div>
+            <div id="app-pin-wrapper">
+                <input id="app-pin-hidden-input" maxlength="4" type="number" value="" disabled="">
+                <div id="app-pin">
+                    <div class="app-pin-digit focused"><span class="app-pin-digit-value"></span></div>
+                    <div class="app-pin-digit"><span class="app-pin-digit-value"></span></div>
+                    <div class="app-pin-digit"><span class="app-pin-digit-value"></span></div>
+                    <div class="app-pin-digit"><span class="app-pin-digit-value"></span></div>
+                </div>
+                <h3 id="app-pin-label">Enter PIN (1234)  <span id="app-pin-cancel-text">Cancel</span></h3></div>
+            <div id="app-menu">
+                <div id="app-menu-content-wrapper">
+                    <div id="app-menu-content">
+                        <div id="app-menu-content-header">
+                            <div class="app-menu-content-header-section">
+                                <div id="app-menu-info" class="info"><span class="time">2:38</span><span class="weather"><i class="fa-duotone fa-sun" aria-hidden="true"></i><span class="weather-temperature-value">68</span><span class="weather-temperature-unit">°F</span></span>
+                                </div>
+                                <div class="reminder">
+                                    <div class="reminder-icon"><i class="fa-regular fa-bell" aria-hidden="true"></i></div><span class="reminder-text">Decisions are the key to the<span class="reminder-time"> Future</span></span>
+                                </div>
+                            </div>
+                            <div class="app-menu-content-header-section">
+                                <button id="sign-out-button" class="user-status-button clear-button" type="button" title="Lock">
+                                  <i class="fa-solid fa-lock" aria-hidden="true" style="font-size: 1.6em; color: #222;"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="scrollable-component" id="quick-nav">
+                            <div class="quick-nav-item clear-button"><span class="quick-nav-item-label">ChatGpt</span></div>
+                            <div class="quick-nav-item clear-button"><span class="quick-nav-item-label">Food</span></div>
+                            <div class="quick-nav-item clear-button"><span class="quick-nav-item-label">Apps</span></div>
+                            <div class="quick-nav-item clear-button"><span class="quick-nav-item-label">Movies</span></div>
+                        </div><a id="youtube-link" class="clear-button" href="https://www.youtube.com/c/Hyperplexed" target="_blank"><i class="fa-brands fa-youtube" aria-hidden="true"></i><span>Hyperplexed</span></a>
+                        <div id="weather-section" class="menu-section">
+                            <div class="menu-section-title"><i class="fa-solid fa-sun" aria-hidden="true"></i><span class="menu-section-title-text">How's it look out there?</span></div>
+                            <div class="scrollable-component menu-section-content">
+                                <div class="day-card">
+                                    <div class="day-card-content"><span class="day-weather-temperature">72<span class="day-weather-temperature-unit">°F</span></span><i class="day-weather-icon fa-duotone fa-sun sunny" aria-hidden="true"></i><span class="day-name">Mon</span></div>
+                                </div>
+                                <div class="day-card">
+                                    <div class="day-card-content"><span class="day-weather-temperature">75<span class="day-weather-temperature-unit">°F</span></span><i class="day-weather-icon fa-duotone fa-sun sunny" aria-hidden="true"></i><span class="day-name">Tues</span></div>
+                                </div>
+                                <div class="day-card">
+                                    <div class="day-card-content"><span class="day-weather-temperature">61<span class="day-weather-temperature-unit">°F</span></span><i class="day-weather-icon fa-duotone fa-clouds cloudy" aria-hidden="true"></i><span class="day-name">Wed</span></div>
+                                </div>
+                                <div class="day-card">
+                                    <div class="day-card-content"><span class="day-weather-temperature">72<span class="day-weather-temperature-unit">°F</span></span><i class="day-weather-icon fa-duotone fa-cloud-drizzle rainy" aria-hidden="true"></i><span class="day-name">Thurs</span></div>
+                                </div>
+                                <div class="day-card">
+                                    <div class="day-card-content"><span class="day-weather-temperature">71<span class="day-weather-temperature-unit">°F</span></span><i class="day-weather-icon fa-duotone fa-cloud-bolt stormy" aria-hidden="true"></i><span class="day-name">Fri</span></div>
+                                </div>
+                                <div class="day-card">
+                                    <div class="day-card-content"><span class="day-weather-temperature">77<span class="day-weather-temperature-unit">°F</span></span><i class="day-weather-icon fa-duotone fa-sun sunny" aria-hidden="true"></i><span class="day-name">Sat</span></div>
+                                </div>
+                                <div class="day-card">
+                                    <div class="day-card-content"><span class="day-weather-temperature">64<span class="day-weather-temperature-unit">°F</span></span><i class="day-weather-icon fa-duotone fa-clouds cloudy" aria-hidden="true"></i><span class="day-name">Sun</span></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="restaurants-section" class="menu-section">
+                            <div class="menu-section-title"><i class="fa-regular fa-pot-food" aria-hidden="true"></i><span class="menu-section-title-text">Get it delivered!</span></div>
+                            <div class="menu-section-content">
+                                <div class="restaurant-card background-image" style="background-image: url(&quot;https://images.unsplash.com/photo-1606131731446-5568d87113aa?ixlib=rb-1.2.1&amp;ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8YnVyZ2Vyc3xlbnwwfHwwfHw%3D&amp;auto=format&amp;fit=crop&amp;w=500&amp;q=60&quot;);">
+                                    <div class="restaurant-card-content">
+                                        <div class="restaurant-card-content-items"><span class="restaurant-card-title">Burgers</span><span class="restaurant-card-desc">The best burgers in town</span></div>
+                                    </div>
+                                </div>
+                                <div class="restaurant-card background-image" style="background-image: url(&quot;https://images.unsplash.com/photo-1576506295286-5cda18df43e7?ixlib=rb-1.2.1&amp;ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8aWNlJTIwY3JlYW18ZW58MHx8MHx8&amp;auto=format&amp;fit=crop&amp;w=500&amp;q=60&quot;);">
+                                    <div class="restaurant-card-content">
+                                        <div class="restaurant-card-content-items"><span class="restaurant-card-title">Ice Cream</span><span class="restaurant-card-desc">The worst ice-cream around</span></div>
+                                    </div>
+                                </div>
+                                <div class="restaurant-card background-image" style="background-image: url(&quot;https://images.unsplash.com/photo-1590947132387-155cc02f3212?ixlib=rb-1.2.1&amp;ixid=MnwxMjA3fDB8MHxzZWFyY2h8Nnx8cGl6emF8ZW58MHx8MHx8&amp;auto=format&amp;fit=crop&amp;w=500&amp;q=60&quot;);">
+                                    <div class="restaurant-card-content">
+                                        <div class="restaurant-card-content-items"><span class="restaurant-card-title">Pizza</span><span class="restaurant-card-desc">This 'Za be gettin down</span></div>
+                                    </div>
+                                </div>
+                                <div class="restaurant-card background-image" style="background-image: url(&quot;https://images.unsplash.com/photo-1529193591184-b1d58069ecdd?ixlib=rb-1.2.1&amp;ixid=MnwxMjA3fDB8MHxzZWFyY2h8OXx8YmFyYmVxdWV8ZW58MHx8MHx8&amp;auto=format&amp;fit=crop&amp;w=500&amp;q=60&quot;);">
+                                    <div class="restaurant-card-content">
+                                        <div class="restaurant-card-content-items"><span class="restaurant-card-title">BBQ</span><span class="restaurant-card-desc">BBQ ain't need no rhyme</span></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="tools-section" class="menu-section">
+                            <div class="menu-section-title"><i class="fa-solid fa-toolbox" aria-hidden="true"></i><span class="menu-section-title-text">What's Appening?</span></div>
+                            <div class="menu-section-content">
+                                <div class="tool-card">
+                                    <div class="tool-card-background background-image" style="background-image: url(&quot;https://images.unsplash.com/photo-1492011221367-f47e3ccd77a0?ixlib=rb-1.2.1&amp;ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTV8fHdlYXRoZXJ8ZW58MHx8MHx8&amp;auto=format&amp;fit=crop&amp;w=500&amp;q=60&quot;);"></div>
+                                    <div class="tool-card-content">
+                                        <div class="tool-card-content-header"><span class="tool-card-label">Weather</span><span class="tool-card-name">Cloudly</span></div><i class="fa-solid fa-cloud-sun tool-card-icon" aria-hidden="true"></i></div>
+                                </div>
+                                <div class="tool-card">
+                                    <div class="tool-card-background background-image" style="background-image: url(&quot;https://images.unsplash.com/photo-1587145820266-a5951ee6f620?ixlib=rb-1.2.1&amp;ixid=MnwxMjA3fDB8MHxzZWFyY2h8NXx8Y2FsY3VsYXRvcnxlbnwwfHwwfHw%3D&amp;auto=format&amp;fit=crop&amp;w=500&amp;q=60&quot;);"></div>
+                                    <div class="tool-card-content">
+                                        <div class="tool-card-content-header"><span class="tool-card-label">Calc</span><span class="tool-card-name">Mathio</span></div><i class="fa-solid fa-calculator-simple tool-card-icon" aria-hidden="true"></i></div>
+                                </div>
+                                <div class="tool-card">
+                                    <div class="tool-card-background background-image" style="background-image: url(&quot;https://images.unsplash.com/photo-1579621970588-a35d0e7ab9b6?ixlib=rb-1.2.1&amp;ixid=MnwxMjA3fDB8MHxzZWFyY2h8OHx8YmFua3xlbnwwfHwwfHw%3D&amp;auto=format&amp;fit=crop&amp;w=500&amp;q=60&quot;);"></div>
+                                    <div class="tool-card-content">
+                                        <div class="tool-card-content-header"><span class="tool-card-label">Bank</span><span class="tool-card-name">Cashy</span></div><i class="fa-solid fa-piggy-bank tool-card-icon" aria-hidden="true"></i></div>
+                                </div>
+                                <div class="tool-card">
+                                    <div class="tool-card-background background-image" style="background-image: url(&quot;https://images.unsplash.com/photo-1436491865332-7a61a109cc05?ixlib=rb-1.2.1&amp;ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8YWlycGxhbmV8ZW58MHx8MHx8&amp;auto=format&amp;fit=crop&amp;w=500&amp;q=60&quot;);"></div>
+                                    <div class="tool-card-content">
+                                        <div class="tool-card-content-header"><span class="tool-card-label">Travel</span><span class="tool-card-name">Fly-er-io-ly</span></div><i class="fa-solid fa-plane tool-card-icon" aria-hidden="true"></i></div>
+                                </div>
+                                <div class="tool-card">
+                                    <div class="tool-card-background background-image" style="background-image: url(&quot;https://images.unsplash.com/photo-1612287230202-1ff1d85d1bdf?ixlib=rb-1.2.1&amp;ixid=MnwxMjA3fDB8MHxzZWFyY2h8NXx8dmlkZW8lMjBnYW1lc3xlbnwwfHwwfHw%3D&amp;auto=format&amp;fit=crop&amp;w=500&amp;q=60&quot;);"></div>
+                                    <div class="tool-card-content">
+                                        <div class="tool-card-content-header"><span class="tool-card-label">Games</span><span class="tool-card-name">Gamey</span></div><i class="fa-solid fa-gamepad-modern tool-card-icon" aria-hidden="true"></i></div>
+                                </div>
+                                <div class="tool-card">
+                                    <div class="tool-card-background background-image" style="background-image: url(&quot;https://images.unsplash.com/photo-1578022761797-b8636ac1773c?ixlib=rb-1.2.1&amp;ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTJ8fHZpZGVvJTIwY2hhdHxlbnwwfHwwfHw%3D&amp;auto=format&amp;fit=crop&amp;w=500&amp;q=60&quot;);"></div>
+                                    <div class="tool-card-content">
+                                        <div class="tool-card-content-header"><span class="tool-card-label">Video Chat</span><span class="tool-card-name">Chatty</span></div><i class="fa-solid fa-video tool-card-icon" aria-hidden="true"></i></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="movies-section" class="menu-section">
+                            <div class="menu-section-title"><i class="fa-solid fa-camera-movie" aria-hidden="true"></i><span class="menu-section-title-text">Popcorn time!</span></div>
+                            <div class="scrollable-component menu-section-content">
+                                <div id="movie-card-1" class="movie-card">
+                                    <div class="movie-card-background background-image" style="background-image: url(&quot;https://images.unsplash.com/photo-1596727147705-61a532a659bd?ixlib=rb-1.2.1&amp;ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8bWFydmVsfGVufDB8fDB8fA%3D%3D&amp;auto=format&amp;fit=crop&amp;w=500&amp;q=60&quot;);"></div>
+                                    <div class="movie-card-content">
+                                        <div class="movie-card-info"><span class="movie-card-title">Protectors of the Milky Way</span><span class="movie-card-desc">A tale of some people watching over a large portion of space.</span></div><i class="fa-solid fa-galaxy" aria-hidden="true"></i></div>
+                                </div>
+                                <div id="movie-card-2" class="movie-card">
+                                    <div class="movie-card-background background-image" style="background-image: url(&quot;https://images.unsplash.com/photo-1535666669445-e8c15cd2e7d9?ixlib=rb-1.2.1&amp;ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8bG9yZCUyMG9mJTIwdGhlJTIwcmluZ3N8ZW58MHx8MHx8&amp;auto=format&amp;fit=crop&amp;w=500&amp;q=60&quot;);"></div>
+                                    <div class="movie-card-content">
+                                        <div class="movie-card-info"><span class="movie-card-title">Hole People</span><span class="movie-card-desc">Some people leave their holes to disrupt some things.</span></div><i class="fa-solid fa-hat-wizard" aria-hidden="true"></i></div>
+                                </div>
+                                <div id="movie-card-3" class="movie-card">
+                                    <div class="movie-card-background background-image" style="background-image: url(&quot;https://images.unsplash.com/photo-1632266484284-a11d9e3a460a?ixlib=rb-1.2.1&amp;ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTZ8fGhhcnJ5JTIwcG90dGVyfGVufDB8fDB8fA%3D%3D&amp;auto=format&amp;fit=crop&amp;w=500&amp;q=60&quot;);"></div>
+                                    <div class="movie-card-content">
+                                        <div class="movie-card-info"><span class="movie-card-title">Pot of Hair</span><span class="movie-card-desc">A boy with a dent in his head tries to stop a bad guy. And by bad I mean bad at winning.</span></div><i class="fa-solid fa-broom-ball"
+                                        aria-hidden="true"></i></div>
+                                </div>
+                                <div id="movie-card-4" class="movie-card">
+                                    <div class="movie-card-background background-image" style="background-image: url(&quot;https://images.unsplash.com/photo-1533613220915-609f661a6fe1?ixlib=rb-1.2.1&amp;ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8c3RhciUyMHdhcnN8ZW58MHx8MHx8&amp;auto=format&amp;fit=crop&amp;w=500&amp;q=60&quot;);"></div>
+                                    <div class="movie-card-content">
+                                        <div class="movie-card-info"><span class="movie-card-title">Area Fights</span><span class="movie-card-desc">A long drawn out story of some people fighting over some space. Cuz there isn't enough of it.</span></div><i class="fa-solid fa-starship-freighter"
+                                        aria-hidden="true"></i></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="app-background">
+                <div id="app-background-image" class="background-image"></div>
+            </div>
+            <div id="sign-in-button-wrapper">
+                <button id="sign-in-button" class="user-status-button clear-button" type="button"><i class="fa-solid fa-arrow-right-to-arc" aria-hidden="true"></i></button>
+            </div>
+            <div id="app-loading-icon"><i class="fa-solid fa-spinner-third" aria-hidden="true"></i></div>
+        </div>
+    </div>
+    <!-- partial -->
+    <script src="https://unpkg.com/react@17/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/browse/@types/react@16.4.14/index.d.ts"></script>
+    <script src="https://unpkg.com/browse/@types/react-dom@17.0.2/index.d.ts"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/classnames/2.3.1/index.min.js"></script>
+    <script src="https://codepen.io/Hyperplexed/pen/xxYJYjM/54407644e24173ad6019b766443bf2a6.js"></script>
+    <script src="https://kit.fontawesome.com/1ee8f271b9.js"></script>
+    <script src="./script.js"></script>
+
+    <!-- Code injected by live-server -->
+    <script>
+        // <![CDATA[  <-- For SVG support
+        	if ('WebSocket' in window) {
+        		(function () {
+        			function refreshCSS() {
+        				var sheets = [].slice.call(document.getElementsByTagName("link"));
+        				var head = document.getElementsByTagName("head")[0];
+        				for (var i = 0; i < sheets.length; ++i) {
+        					var elem = sheets[i];
+        					var parent = elem.parentElement || head;
+        					parent.removeChild(elem);
+        					var rel = elem.rel;
+        					if (elem.href && typeof rel != "string" || rel.length == 0 || rel.toLowerCase() == "stylesheet") {
+        						var url = elem.href.replace(/(&|\?)_cacheOverride=\d+/, '');
+        						elem.href = url + (url.indexOf('?') >= 0 ? '&' : '?') + '_cacheOverride=' + (new Date().valueOf());
+        					}
+        					parent.appendChild(elem);
+        				}
+        			}
+        			var protocol = window.location.protocol === 'http:' ? 'ws://' : 'wss://';
+        			var address = protocol + window.location.host + window.location.pathname + '/ws';
+        			var socket = new WebSocket(address);
+        			socket.onmessage = function (msg) {
+        				if (msg.data == 'reload') window.location.reload();
+        				else if (msg.data == 'refreshcss') refreshCSS();
+        			};
+        			if (sessionStorage && !sessionStorage.getItem('IsThisFirstTime_Log_From_LiveServer')) {
+        				console.log('Live reload enabled.');
+        				sessionStorage.setItem('IsThisFirstTime_Log_From_LiveServer', true);
+        			}
+        		})();
+        	}
+        	else {
+        		console.error('Upgrade your browser. This Browser is NOT supported WebSocket for Live-Reloading.');
+        	}
+        	// ]]>
+    </script>
+
+
+    <div>
+        <div style="display: none; position: fixed; top: 30px; width: auto; max-width: 100%; text-align: center; left: 50%; transform: translateX(-50%); z-index: 99999999;">
+            <div style="display: inline-block; font-size: 14px; font-weight: bold; border: 1px solid rgb(240, 195, 109); background-color: rgb(249, 237, 190); padding: 0px 10px; border-radius: 2px; box-shadow: rgba(0, 0, 0, 0.2) 0px 2px 4px;"></div>
+        </div>
+    </div>
+</body>
+
+</html>
