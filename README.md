@@ -1,4 +1,4 @@
 # DOCK
 
 # DOCK Is a Personal Dashboard Desinged by Surya Raja Mandapalli
-<img width="300" height="300" alt="icons8-menu-1500" src="https://github.com/user-attachments/assets/2058c8e0-8764-46a0-9450-50fdcbfb67fa" />
+<img width="600" height="250" alt="icons8-menu-1500" src="https://github.com/user-attachments/assets/2058c8e0-8764-46a0-9450-50fdcbfb67fa" />
