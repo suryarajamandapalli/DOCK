@@ -251,41 +251,77 @@ const MenuSection = (props) => {
             React.createElement("span", { className: "menu-section-title-text" }, props.title)),
         getContent()));
 };
+
+
 const QuickNav = () => {
     const getItems = () => {
-        return [{
+        const items = [
+            {
                 id: 1,
-                label: "ChatGpt",
-                href: "https://chat.openai.com/"
-            }, {
+                label: "| ChatGpt",
+                href: "https://chat.openai.com/",
+                icon: "https://chat.openai.com/favicon.ico",
+            },
+            {
                 id: 2,
-                label: "Gemini",
-                href: "https://gemini.google.com/"
-            }, {
+                label: "| Gemini",
+                href: "https://gemini.google.com/",
+                icon: "https://registry.npmmirror.com/@lobehub/icons-static-png/1.56.0/files/dark/gemini-color.png",
+            },
+            {
                 id: 3,
-                label: "Perplexity",
-                href: "https://www.perplexity.ai/"
-            }, {
+                label: "| Perplexity",
+                href: "https://www.perplexity.ai/",
+                icon: "https://www.perplexity.ai/favicon.ico"
+            },
+            {
                 id: 4,
-                label: "DeepSeek",
-                href: "https://chat.deepseek.com/"
-            }].map((item) => {
-            return (
-                React.createElement("a", {
-                    key: item.id,
-                    className: "quick-nav-item clear-button",
-                    href: item.href,
-                    target: "_blank",
-                    rel: "noopener noreferrer",
-                    style: { textDecoration: "none" }
-                },
-                    React.createElement("span", { className: "quick-nav-item-label" }, item.label)
-                )
-            );
-        });
+                label: "| DeepSeek",
+                href: "https://chat.deepseek.com/",
+                icon: "https://www.deepseek.com/favicon.ico"
+            },
+            {
+                id: 5,
+                label: "| WhatsApp",
+                href: "https://web.whatsapp.com/",
+                icon: "/whatsapp.png"
+            }
+        ];
+
+        return items.map((item) =>
+            React.createElement("a", {
+                key: item.id,
+                className: "quick-nav-item clear-button",
+                href: item.href,
+                target: "_blank",
+                rel: "noopener noreferrer",
+                style: {
+                    textDecoration: "none",
+                    display: "flex",
+                    alignItems: "center",
+                    gap: "8px",
+                    margin: "4px 0"
+                }
+            },
+                React.createElement("img", {
+                    src: item.icon,
+                    alt: `${item.label}icon`,
+                    style: {
+                        width: "20px",
+                        height: "20px",
+                        borderRadius: "4px"
+                    }
+                }),
+                React.createElement("span", { className: "quick-nav-item-label" }, item.label)
+            )
+        );
     };
-    return (React.createElement(ScrollableComponent, { id: "quick-nav" }, getItems()));
+
+    return React.createElement(ScrollableComponent, { id: "quick-nav" }, getItems());
 };
+
+
+
 const Weather = () => {
     const getDays = () => {
         return [{
@@ -426,13 +462,20 @@ const Restaurants = () => {
                 "https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExZTZubHR5czFvMjdydWU2aDFpN2M2ZGt4ejV0Y3F2M3ZnNzI2emh0diZlcD12MV9naWZzX3NlYXJjaCZjdD1n/hrJj4LarGeUCs/giphy.webp"
             ],
             "Evening": [
-                "https://media.tenor.com/CwW5yRjIfd0AAAAd/good-evening.gif",
-                "https://media.tenor.com/oPOAxjWhV7sAAAAC/evening-mountains.gif"
+                "https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExajdhaWg1MDRqbGVlMTdmbWw4cTR5d2Z0NHlwOHA1MTY4eHZ5czRhaiZlcD12MV9naWZzX3NlYXJjaCZjdD1n/B2czf5h7JtjNe/giphy.webp",
+                "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExeXN1ZjN4OHV1am5qeXM5a3g4ZWdtYnZsdWc0ZDM2dnBnN3hlcHgxZiZlcD12MV9naWZzX3NlYXJjaCZjdD1n/Mgq7EMQUrhcvC/giphy.gif",
+                "https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExMTllcGE3OXVoZWxvdGpsNHUwNmJzeGJwcGNjaW1jcTAxMTV2bnRzcyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/wK2MKn5jjcvUIe2ux1/giphy.gif",
+                "https://i.giphy.com/1hujy3a24Q3eM.webp",
+                "https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExaXY2cG9wNHlvemR2bHNteGVnamU1ZDB5c3pqcGR1b2dqaTQ5ZXEydyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/5cYAQwngz7JRN0fab6/giphy.gif",
+                "https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExMXQ1cTI5NGNjYzdpdnd1d3M4c3FvMWd3bmk2bDRraXlzcmQ2dHVybCZlcD12MV9naWZzX3NlYXJjaCZjdD1n/49VB0PHxR5Vsc/giphy.webp",
+                "https://i.giphy.com/iP8UJhdQnWKibKUO3U.webp",
+                "https://cdn.pixabay.com/animation/2023/01/25/00/36/00-36-10-183_512.gif"
             ],
             "Night": [
-                "https://media.tenor.com/o-Y77AoVq2EAAAAC/good-night-sweet-dreams.gif",
-                "https://media.tenor.com/FYAb0RTA1pQAAAAC/good-night-moon.gif"
+                "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExNXVteWVlaWh6cHoxenptZW9uZjZ0YmF2NWQybHV1M2l5dzcyM3JwcSZlcD12MV9naWZzX3NlYXJjaCZjdD1n/Zf7L4QMWo3RkI/giphy.gif",
+                "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExNXVteWVlaWh6cHoxenptZW9uZjZ0YmF2NWQybHV1M2l5dzcyM3JwcSZlcD12MV9naWZzX3NlYXJjaCZjdD1n/l5JbspfwZ0yjHjlJ0K/giphy.gif"
             ]
+
         };
         const available = gifs[slot] || [];
         return available[Math.floor(Math.random() * available.length)];
@@ -449,11 +492,22 @@ const Restaurants = () => {
     };
 
     const cardStyle = {
-        backgroundColor: "#111",
-        color: "#fff",
-        borderRadius: "12px",
+        height: "95%",
+        backgroundColor: "rgba(255, 255, 255, 0.05)",
+        backdropFilter: "blur(5px)",
+        WebkitBackdropFilter: "blur(5px)",
+        borderRadius: "20px",
+        border: "1px solid rgba(255, 255, 255, 0.3)",
+        boxShadow: `
+            0 8px 32px rgba(0, 0, 0, 0.1),
+            inset 0 1px 0 rgba(255, 255, 255, 0.5),
+            inset 0 -1px 0 rgba(255, 255, 255, 0.1),
+            inset 0 0 0px 0px rgba(255, 255, 255, 0),
+            0 8px 16px rgba(0, 0, 0, 0.5)
+        `,
+        position: "relative",
         overflow: "hidden",
-        boxShadow: "0 8px 16px rgba(0, 0, 0, 0.5)",
+        color: "#fff",
         display: "flex",
         flexDirection: "column",
         alignItems: "center",
@@ -497,10 +551,7 @@ const Restaurants = () => {
             key: "spotify-tile",
             style: cardStyle
         },
-            React.createElement("h3", {
-                style: { marginBottom: "10px", fontSize: "1.2rem" }
-                }, ""),
-
+            
             React.createElement("div", { style: mediaWrapperStyle },
                 React.createElement("iframe", {
                     style: iframeStyle,
@@ -516,10 +567,6 @@ const Restaurants = () => {
             key: "gif-tile",
             style: cardStyle
         },
-            React.createElement("h3", {
-                style: { marginBottom: "10px", fontSize: "1.2rem" }
-            }, `Good ${timeSlot}`),
-
             React.createElement("div", { style: mediaWrapperStyle },
                 React.createElement("img", {
                     src: gifUrl,
