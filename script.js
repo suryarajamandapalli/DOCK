@@ -9,7 +9,7 @@ var UserStatus;
 })(UserStatus || (UserStatus = {}));
 var Default;
 (function (Default) {
-    Default["PIN"] = "9999";
+    Default["PIN"] = "3782";
 })(Default || (Default = {}));
 
 
@@ -127,7 +127,7 @@ const WeatherSnap = () => {
 const Reminder = () => {
     return (React.createElement("div", { className: "reminder" },
         React.createElement("div", { className: "reminder-icon" },
-            React.createElement("i", { className: "fa-regular fa-bell" })),
+            React.createElement("i", { className: "" })),
         React.createElement("span", { className: "reminder-text" },
             "Decisions are the keys to the future. ",
             React.createElement("span", { className: "reminder-time" }, ""))));
@@ -155,7 +155,7 @@ const PinDigit = (props) => {
         }
     }, [props.value]);
     return (React.createElement("div", { className: classNames("app-pin-digit", { focused: props.focused, hidden }) },
-        React.createElement("span", { className: "app-pin-digit-value" }, props.value || "")));
+        React.createElement("span", { className: "app-pin-digit-value" }, props.value || "*")));
 };
 const Pin = () => {
     const { userStatus, setUserStatusTo } = React.useContext(AppContext);
@@ -218,7 +218,7 @@ const Pin = () => {
                 window.removeEventListener("keydown", handleKeyDown);
             };
         }, [userStatus]);
-        return (React.createElement("span", { id: "app-pin-cancel-text", onClick: handleOnCancel }, ""));
+        return (React.createElement("span", { id: "app-pin-cancel-text", onClick: handleOnCancel }, "| Cancel"));
     };
     const getErrorText = () => {
         if (userStatus === UserStatus.LogInError) {
@@ -284,8 +284,30 @@ const QuickNav = () => {
                 id: 5,
                 label: "| WhatsApp",
                 href: "https://web.whatsapp.com/",
-                icon: "/whatsapp.png"
+                icon: "whatsapp.png"
+            },
+
+            {
+                id: 6,
+                label: "| GitHub",
+                href: "https://github.com/suryarajamandapalli",
+                icon: "https://github.githubassets.com/assets/pinned-octocat-093da3e6fa40.svg"
+            },
+
+                        {
+                id: 7,
+                label: "| YouTube",
+                href: "https://www.youtube.com/",
+                icon: "https://www.youtube.com/s/desktop/493698c2/img/logos/favicon_144x144.png"
+            },
+
+            {
+                id: 8,
+                label: "| Gmail",
+                href: "https://mail.google.com/mail/?tab=rm&ogbl",
+                icon: "https://ssl.gstatic.com/ui/v1/icons/mail/rfr/gmail.ico"
             }
+
         ];
 
         return items.map((item) =>
@@ -300,12 +322,13 @@ const QuickNav = () => {
                     display: "flex",
                     alignItems: "center",
                     gap: "8px",
-                    margin: "4px 0"
+                    margin: "4px 0",
+                    transition: "background-color 0.4s ease",
                 }
             },
                 React.createElement("img", {
                     src: item.icon,
-                    alt: `${item.label}icon`,
+                    alt:`${item.label}icon`,
                     style: {
                         width: "20px",
                         height: "20px",
@@ -381,7 +404,7 @@ const Weather = () => {
                     React.createElement("span", { className: "day-name" }, day.name))));
         });
     };
-    return (React.createElement(MenuSection, { icon: "fa-solid fa-sun", id: "weather-section", scrollable: true, title: "", style: { display: 'none' } }, getDays()));
+    return (React.createElement(MenuSection, { icon: "", id: "weather-section", scrollable: true, title: "", style: { display: 'none' } }, getDays()));
 };
 const Tools = () => {
     const getTools = () => {
@@ -434,7 +457,7 @@ const Tools = () => {
                     React.createElement("i", { className: classNames(tool.icon, "tool-card-icon") }))));
         });
     };
-    return (React.createElement(MenuSection, { icon: "fa-solid fa-toolbox", id: "tools-section", title: "What's Appening?" }, getTools()));
+    return (React.createElement(MenuSection, { icon: "", id: "tools-section", title: "Quick Navigation" }, getTools()));
 };
 
 const Restaurants = () => {
@@ -451,15 +474,132 @@ const Restaurants = () => {
         const gifs = {
             "Early Morning": [
                 "https://media.tenor.com/JtSRclSkblsAAAAC/good-morning-sunrise.gif",
-                "https://media.tenor.com/qNz64tMyv8IAAAAC/morning-rise-and-shine.gif"
+                "https://media.tenor.com/qNz64tMyv8IAAAAC/morning-rise-and-shine.gif",
+                "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExa2FsY28zcnhpNDgzbGZtbHAwMHN1dG5yZ3kxbmRlNnk5YTFoM3VlMCZlcD12MV9naWZzX3NlYXJjaCZjdD1n/KxbhQdZQ8Pvo47Hnti/giphy.gif",
+                "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExNzJmdW8wdGxrbjIxOXoyY2FzOW4ycTUydjI4YXBrcnR3cHJodXhoYyZlcD12MV9naWZzX3NlYXJjaCZjdD1n/13DobtLzCTj16M/giphy.gif",
+                "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExNzJmdW8wdGxrbjIxOXoyY2FzOW4ycTUydjI4YXBrcnR3cHJodXhoYyZlcD12MV9naWZzX3NlYXJjaCZjdD1n/AsAvSi7jJzbVfDnrpJ/giphy.gif",
+                "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExdGVkZWp2ZnI5ZjBidXk2eG9tdnhoMzdqN2twNzhqbGYzdDRteDhpeCZlcD12MV9naWZzX3NlYXJjaCZjdD1n/WzLDljBpplUvm/giphy.gif",
+                "https://media1.tenor.com/m/GjhrClBv4WwAAAAd/nature-rain.gif",
+                "https://media1.tenor.com/m/PIW2WxL6iNAAAAAd/aesthetic-anime.gif",
+                "https://media1.tenor.com/m/eawU1m28QAYAAAAd/garden-of-words-anime.gif",
+                "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExbDBtYmFvZjl6ejRzYjM0ODlsMG1vZGd5Y2JheG9wMDdiNGM2MzR4ayZlcD12MV9naWZzX3NlYXJjaCZjdD1n/xT0xeP1oX0sSlD0D4s/giphy.gif",
+                "https://tenor.com/Twp6MiCp6A.gif",
+                "https://tenor.com/bTUbM.gif",
+                
+                "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExNzcwOGd6cGFqYmhxYWxrdnF3NTg5dHhhejVlaXhibXE2cjJpa3NlYiZlcD12MV9naWZzX3NlYXJjaCZjdD1n/8VEpd4oZjDq5a/giphy.gif",
+                "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExMzRxYmEzcGxmaHBxc2RtZDFkbXZ5MWcxM25hZGRoMWlwdXkyYjF1YiZlcD12MV9naWZzX3NlYXJjaCZjdD1n/1fnu914Z79qQpVi2xZ/giphy.gif",
+                "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExMzRxYmEzcGxmaHBxc2RtZDFkbXZ5MWcxM25hZGRoMWlwdXkyYjF1YiZlcD12MV9naWZzX3NlYXJjaCZjdD1n/xRioxTFsS7LZWxrC5u/giphy.gif",
+                "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExMzRxYmEzcGxmaHBxc2RtZDFkbXZ5MWcxM25hZGRoMWlwdXkyYjF1YiZlcD12MV9naWZzX3NlYXJjaCZjdD1n/L2HuVpmuQhK3nu2vfz/giphy.gif",
+                "https://tenor.com/dSyvSP4cdHC.gif",
+                "https://tenor.com/bg4kZ.gif",
+                "https://tenor.com/bTu3b.gif",
+                "https://tenor.com/mPfNKknJfd2.gif",
+                "https://tenor.com/bkNqF.gif",
+                "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExd3FsbWN0MXU2YnpyYWdvbjdyZTExOXA0YjF2M2NocG9tdHBicGh5bSZlcD12MV9naWZzX3NlYXJjaCZjdD1n/t7Qb8655Z1VfBGr5XB/giphy.gif",
+                "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExd3FsbWN0MXU2YnpyYWdvbjdyZTExOXA0YjF2M2NocG9tdHBicGh5bSZlcD12MV9naWZzX3NlYXJjaCZjdD1n/35EHbc0PtTJGh3uOoA/giphy.gif",
+                "https://tenor.com/bIAex.gif",
+                "https://tenor.com/bpcfm.gif",
+                "https://tenor.com/bVFib.gif",
+                "https://tenor.com/cpJw6JgTKB6.gif",
+                "https://tenor.com/qcfJOS2T3Ip.gif",
+                "https://tenor.com/9VZ2.gif",
+
+
             ],
             "Morning": [
-                "https://media.tenor.com/Xggp5yIgx9EAAAAC/good-morning-coffee.gif",
-                "https://media.tenor.com/v54ZlmzS5YoAAAAd/morning.gif"
+                "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExbnVkazh6YXJ1MjM4dGlhbnR6ZTFnN2xzNGk4eDg4OGZpY2VtbHdxayZlcD12MV9naWZzX3NlYXJjaCZjdD1n/PspWBxW4y3Kfu/giphy.gif",
+                "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExbnVkazh6YXJ1MjM4dGlhbnR6ZTFnN2xzNGk4eDg4OGZpY2VtbHdxayZlcD12MV9naWZzX3NlYXJjaCZjdD1n/xUPGcdJW7q4UDo90je/giphy.gif",
+                "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExczI2YTdrNTE2cnhiM3F4MDJwdXo2NjRhYWVlcTY3MHZvMm9jN2N3cSZlcD12MV9naWZzX3NlYXJjaCZjdD1n/t7Qb8655Z1VfBGr5XB/giphy.gif",
+                "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExczI2YTdrNTE2cnhiM3F4MDJwdXo2NjRhYWVlcTY3MHZvMm9jN2N3cSZlcD12MV9naWZzX3NlYXJjaCZjdD1n/Mgq7EMQUrhcvC/giphy.gif",
+                "https://media.giphy.com/media/v1.Y2lkPWVjZjA1ZTQ3bXJzY2ltam4zdzVlajZtNGk0MzMzMnJ0dGgxYTJmZjcyc2N3ZmZhbiZlcD12MV9naWZzX3NlYXJjaCZjdD1n/BAD9hUGYZkqPe/giphy.gif",
+                "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExNzcwOGd6cGFqYmhxYWxrdnF3NTg5dHhhejVlaXhibXE2cjJpa3NlYiZlcD12MV9naWZzX3NlYXJjaCZjdD1n/8VEpd4oZjDq5a/giphy.gif",
+                "https://tenor.com/jlaleuTnwIF.gif",
+                "https://tenor.com/o1DCI49PTxj.gif",
+
+
+                "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExNzcwOGd6cGFqYmhxYWxrdnF3NTg5dHhhejVlaXhibXE2cjJpa3NlYiZlcD12MV9naWZzX3NlYXJjaCZjdD1n/8VEpd4oZjDq5a/giphy.gif",
+                "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExMzRxYmEzcGxmaHBxc2RtZDFkbXZ5MWcxM25hZGRoMWlwdXkyYjF1YiZlcD12MV9naWZzX3NlYXJjaCZjdD1n/1fnu914Z79qQpVi2xZ/giphy.gif",
+                "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExMzRxYmEzcGxmaHBxc2RtZDFkbXZ5MWcxM25hZGRoMWlwdXkyYjF1YiZlcD12MV9naWZzX3NlYXJjaCZjdD1n/xRioxTFsS7LZWxrC5u/giphy.gif",
+                "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExMzRxYmEzcGxmaHBxc2RtZDFkbXZ5MWcxM25hZGRoMWlwdXkyYjF1YiZlcD12MV9naWZzX3NlYXJjaCZjdD1n/L2HuVpmuQhK3nu2vfz/giphy.gif",
+                "https://tenor.com/dSyvSP4cdHC.gif",
+                "https://tenor.com/bg4kZ.gif",
+                "https://tenor.com/bTu3b.gif",
+                "https://tenor.com/mPfNKknJfd2.gif",
+                "https://tenor.com/bkNqF.gif",
+                "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExd3FsbWN0MXU2YnpyYWdvbjdyZTExOXA0YjF2M2NocG9tdHBicGh5bSZlcD12MV9naWZzX3NlYXJjaCZjdD1n/t7Qb8655Z1VfBGr5XB/giphy.gif",
+                "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExd3FsbWN0MXU2YnpyYWdvbjdyZTExOXA0YjF2M2NocG9tdHBicGh5bSZlcD12MV9naWZzX3NlYXJjaCZjdD1n/35EHbc0PtTJGh3uOoA/giphy.gif",
+                "https://tenor.com/bIAex.gif",
+                "https://tenor.com/bpcfm.gif",
+                "https://tenor.com/bVFib.gif",
+                "https://tenor.com/cpJw6JgTKB6.gif",
+                "https://tenor.com/qcfJOS2T3Ip.gif",
+                "https://tenor.com/9VZ2.gif",
+                "https://tenor.com/r57nHbIg7dv.gif",
+
+
+
+
+
+                "https://media1.tenor.com/m/YCc_7AEWPhwAAAAd/nature-background-anime-nature-aesthetic.gif",
+                "https://media1.tenor.com/m/satC_iXTpfYAAAAd/kikis-delivery-service-nature.gif",
+                "https://media1.tenor.com/m/DtlRW-ln4-4AAAAd/moon-water.gif",
+                "https://media1.tenor.com/m/HB6Ku4skoP8AAAAd/anime-goodnight.gif",
+                "https://media1.tenor.com/m/jZ4lkZjRKNcAAAAd/anime-nature.gif",
+                "https://media1.tenor.com/m/2SPaMvRXcZcAAAAd/anime-another.gif",
+                "https://media1.tenor.com/m/iuBOwuUcFukAAAAd/autumn-fall.gif",
+                "https://media1.tenor.com/m/NKIIuz2_FMAAAAAd/rain-green.gif",
+                "https://media1.tenor.com/m/eawU1m28QAYAAAAd/garden-of-words-anime.gif",
+                "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExMHlndmRqcWdpbGhzNThrbnFhN3V1cHVybWtrNWRieTkyMHluZmp2aSZlcD12MV9naWZzX3NlYXJjaCZjdD1n/IuVFGSQZTd6TK/giphy.gif",
+                "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExbDBjY2tkbnY2b2F2d2x5dXllaGN6YXV0YjU5aHh5ODRyd2djOXBjdSZlcD12MV9naWZzX3NlYXJjaCZjdD1n/jlvE2SvCa8ryIpb97I/giphy.gif",
+                "https://tenor.com/v8GIjYtV6Jh.gif",
+                "https://tenor.com/kO59H5ABig4.gif",
+                "https://tenor.com/pyuNKiDvXm4.gif",
+                "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExYjFqcHBuc2d5MjQza2Q4bXRmZnBlbDNxejViZTQzbW50cGU2MG82aiZlcD12MV9naWZzX3NlYXJjaCZjdD1n/5nvK9hUOcK3KAvkMgH/giphy.gif",
+                "https://media.giphy.com/media/v1.Y2lkPWVjZjA1ZTQ3NGFoanF6dHRwN2JjZjkxbDQxM21naXFzb3czaG1oZGV2OGJuMDFubyZlcD12MV9naWZzX3NlYXJjaCZjdD1n/2J5uH3CSBheLlEuCVc/giphy.gif",
+                "https://media.giphy.com/media/v1.Y2lkPWVjZjA1ZTQ3OWYwdGdhb3k5OHVweXU1OHZucXU1ejUwam5pNnAwem82MWpxOGhiZyZlcD12MV9naWZzX3NlYXJjaCZjdD1n/yvdeiIIZL0I6uMgipJ/giphy.gif",
+                "https://media.giphy.com/media/v1.Y2lkPWVjZjA1ZTQ3MXU5dTUzamVkbnE4OWs0cGl1azJwbzZpNndqMG1lajIzdjZ1ZTU2YiZlcD12MV9naWZzX3NlYXJjaCZjdD1n/CK7jeVJ8q0NS1oLdm4/giphy.gif",
+                "https://media.giphy.com/media/v1.Y2lkPWVjZjA1ZTQ3MXU5dTUzamVkbnE4OWs0cGl1azJwbzZpNndqMG1lajIzdjZ1ZTU2YiZlcD12MV9naWZzX3NlYXJjaCZjdD1n/KebICSbjk18COavsKA/giphy.gif",
+                "https://media.giphy.com/media/v1.Y2lkPWVjZjA1ZTQ3eGphZGZ3YXg4cmtzYjdlMzNwZDJsMW14bnhrNHRyOWIwZzF3eWwwbyZlcD12MV9naWZzX3NlYXJjaCZjdD1n/5rI56FGk3HTaBTkePi/giphy.gif",
+                "https://tenor.com/bUpEX.gif",
+                "https://tenor.com/btpRP.gif",
+                "https://tenor.com/bPJxj.gif",
+                "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExc3pybGNtZ3NoYWFuNHZseHYxNnBwa29samZjbDJ6bWQ1bGZybHc4NiZlcD12MV9naWZzX3NlYXJjaCZjdD1n/13DobtLzCTj16M/giphy.gif"
+                
+
+
+
             ],
             "Afternoon": [
                 "https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExZHhjMjgybjQzbGg3ZmpmaXc2MWJtcDg3cTFldGE5d2p4YW03NHRlcyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/xT0wlvGLHmojbeu5vq/giphy.gif",
-                "https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExZTZubHR5czFvMjdydWU2aDFpN2M2ZGt4ejV0Y3F2M3ZnNzI2emh0diZlcD12MV9naWZzX3NlYXJjaCZjdD1n/hrJj4LarGeUCs/giphy.webp"
+                "https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExZTZubHR5czFvMjdydWU2aDFpN2M2ZGt4ejV0Y3F2M3ZnNzI2emh0diZlcD12MV9naWZzX3NlYXJjaCZjdD1n/hrJj4LarGeUCs/giphy.webp",
+                "https://media1.tenor.com/m/eawU1m28QAYAAAAd/garden-of-words-anime.gif",
+
+
+                "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExNzcwOGd6cGFqYmhxYWxrdnF3NTg5dHhhejVlaXhibXE2cjJpa3NlYiZlcD12MV9naWZzX3NlYXJjaCZjdD1n/8VEpd4oZjDq5a/giphy.gif",
+                "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExMzRxYmEzcGxmaHBxc2RtZDFkbXZ5MWcxM25hZGRoMWlwdXkyYjF1YiZlcD12MV9naWZzX3NlYXJjaCZjdD1n/1fnu914Z79qQpVi2xZ/giphy.gif",
+                "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExMzRxYmEzcGxmaHBxc2RtZDFkbXZ5MWcxM25hZGRoMWlwdXkyYjF1YiZlcD12MV9naWZzX3NlYXJjaCZjdD1n/xRioxTFsS7LZWxrC5u/giphy.gif",
+                "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExMzRxYmEzcGxmaHBxc2RtZDFkbXZ5MWcxM25hZGRoMWlwdXkyYjF1YiZlcD12MV9naWZzX3NlYXJjaCZjdD1n/L2HuVpmuQhK3nu2vfz/giphy.gif",
+                "https://tenor.com/dSyvSP4cdHC.gif",
+                "https://tenor.com/bg4kZ.gif",
+                "https://tenor.com/bTu3b.gif",
+                "https://tenor.com/mPfNKknJfd2.gif",
+                "https://tenor.com/bkNqF.gif",
+                "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExd3FsbWN0MXU2YnpyYWdvbjdyZTExOXA0YjF2M2NocG9tdHBicGh5bSZlcD12MV9naWZzX3NlYXJjaCZjdD1n/t7Qb8655Z1VfBGr5XB/giphy.gif",
+                "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExd3FsbWN0MXU2YnpyYWdvbjdyZTExOXA0YjF2M2NocG9tdHBicGh5bSZlcD12MV9naWZzX3NlYXJjaCZjdD1n/35EHbc0PtTJGh3uOoA/giphy.gif",
+                "https://tenor.com/bIAex.gif",
+                "https://tenor.com/bpcfm.gif",
+                "https://tenor.com/bVFib.gif",
+                "https://tenor.com/cpJw6JgTKB6.gif",
+                "https://tenor.com/qcfJOS2T3Ip.gif",
+                "https://tenor.com/9VZ2.gif",
+
+                "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExejc1YTU4cWNud2NqdDIxY2ppeWluODRodzkyNTJxOWNzNXF6Nmt4eSZlcD12MV9naWZzX3NlYXJjaCZjdD1n/fEokfUFbNif3QUGkJE/giphy.gif",
+                "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExOTYxdnJ3MTVyYWlybGw0cHdlNDlud2NxYXRiMGI0aTJva2poOWxpZyZlcD12MV9naWZzX3NlYXJjaCZjdD1n/1ncq2XAnrLN2d90Q3C/giphy.gif",
+                "https://media.giphy.com/media/v1.Y2lkPWVjZjA1ZTQ3MWs5OTBzMG1va3k2bTF4c3BzM2lybHgzMDhtaHB5aGVnNzcwbzMyeSZlcD12MV9naWZzX3NlYXJjaCZjdD1n/uOuiK4F5zZkZ2/giphy.gif",
+                "https://tenor.com/cc0FDuYzcoA.gif",
+
+                
+
             ],
             "Evening": [
                 "https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExajdhaWg1MDRqbGVlMTdmbWw4cTR5d2Z0NHlwOHA1MTY4eHZ5czRhaiZlcD12MV9naWZzX3NlYXJjaCZjdD1n/B2czf5h7JtjNe/giphy.webp",
@@ -469,20 +609,127 @@ const Restaurants = () => {
                 "https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExaXY2cG9wNHlvemR2bHNteGVnamU1ZDB5c3pqcGR1b2dqaTQ5ZXEydyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/5cYAQwngz7JRN0fab6/giphy.gif",
                 "https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExMXQ1cTI5NGNjYzdpdnd1d3M4c3FvMWd3bmk2bDRraXlzcmQ2dHVybCZlcD12MV9naWZzX3NlYXJjaCZjdD1n/49VB0PHxR5Vsc/giphy.webp",
                 "https://i.giphy.com/iP8UJhdQnWKibKUO3U.webp",
-                "https://cdn.pixabay.com/animation/2023/01/25/00/36/00-36-10-183_512.gif"
+                "https://cdn.pixabay.com/animation/2023/01/25/00/36/00-36-10-183_512.gif",
+                "https://media1.tenor.com/m/eawU1m28QAYAAAAd/garden-of-words-anime.gif",
+
+
+                "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExNzcwOGd6cGFqYmhxYWxrdnF3NTg5dHhhejVlaXhibXE2cjJpa3NlYiZlcD12MV9naWZzX3NlYXJjaCZjdD1n/8VEpd4oZjDq5a/giphy.gif",
+                "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExMzRxYmEzcGxmaHBxc2RtZDFkbXZ5MWcxM25hZGRoMWlwdXkyYjF1YiZlcD12MV9naWZzX3NlYXJjaCZjdD1n/1fnu914Z79qQpVi2xZ/giphy.gif",
+                "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExMzRxYmEzcGxmaHBxc2RtZDFkbXZ5MWcxM25hZGRoMWlwdXkyYjF1YiZlcD12MV9naWZzX3NlYXJjaCZjdD1n/xRioxTFsS7LZWxrC5u/giphy.gif",
+                "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExMzRxYmEzcGxmaHBxc2RtZDFkbXZ5MWcxM25hZGRoMWlwdXkyYjF1YiZlcD12MV9naWZzX3NlYXJjaCZjdD1n/L2HuVpmuQhK3nu2vfz/giphy.gif",
+                "https://tenor.com/dSyvSP4cdHC.gif",
+                "https://tenor.com/bg4kZ.gif",
+                "https://tenor.com/bTu3b.gif",
+                "https://tenor.com/mPfNKknJfd2.gif",
+                "https://tenor.com/bkNqF.gif",
+                "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExd3FsbWN0MXU2YnpyYWdvbjdyZTExOXA0YjF2M2NocG9tdHBicGh5bSZlcD12MV9naWZzX3NlYXJjaCZjdD1n/t7Qb8655Z1VfBGr5XB/giphy.gif",
+                "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExd3FsbWN0MXU2YnpyYWdvbjdyZTExOXA0YjF2M2NocG9tdHBicGh5bSZlcD12MV9naWZzX3NlYXJjaCZjdD1n/35EHbc0PtTJGh3uOoA/giphy.gif",
+                "https://tenor.com/bIAex.gif",
+                "https://tenor.com/bpcfm.gif",
+                "https://tenor.com/bVFib.gif",
+                "https://tenor.com/cpJw6JgTKB6.gif",
+                "https://tenor.com/qcfJOS2T3Ip.gif",
+                "https://tenor.com/9VZ2.gif",
+
+                "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExdXEwZ2llNjUzdGsyM2tmdnRkenRhN3NicW9sOWNraDlyaGEzZ3lsYSZlcD12MV9naWZzX3NlYXJjaCZjdD1n/l1J9BYe5eZccC4Nck/giphy.gif",
+                "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExNzM4czY4dmQzMjBxYzNtcDQ2eHVoMTd2ZjJicW8xdGd5aDBjaWVmcSZlcD12MV9naWZzX3NlYXJjaCZjdD1n/wK2MKn5jjcvUIe2ux1/giphy.gif",
+                "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExNzM4czY4dmQzMjBxYzNtcDQ2eHVoMTd2ZjJicW8xdGd5aDBjaWVmcSZlcD12MV9naWZzX3NlYXJjaCZjdD1n/1Qi7GG8my6uhLHPLP5/giphy.gif",
+                "https://media.giphy.com/media/v1.Y2lkPWVjZjA1ZTQ3ZjA1NHk2ZWVib3BzaGdwdmI4ZTBkd3poOXZtYTQyaTBxNDltNmViMCZlcD12MV9naWZzX3NlYXJjaCZjdD1n/3o7aD9y2CKtGHRfhOE/giphy.gif",
+                "https://media.giphy.com/media/v1.Y2lkPWVjZjA1ZTQ3ZjA1NHk2ZWVib3BzaGdwdmI4ZTBkd3poOXZtYTQyaTBxNDltNmViMCZlcD12MV9naWZzX3NlYXJjaCZjdD1n/xT9KVgHIvt5YJXT7W0/giphy.gif",
+                "https://media.giphy.com/media/v1.Y2lkPWVjZjA1ZTQ3NDNlbmg3ZjQxdDRyYzBmejhsNXdwOWp0N3duNnN3MmI0bmx6cHBidSZlcD12MV9naWZzX3NlYXJjaCZjdD1n/fSYEBNTtPJ7YbjRXX4/giphy.gif",
+                "https://media.giphy.com/media/v1.Y2lkPWVjZjA1ZTQ3NDNlbmg3ZjQxdDRyYzBmejhsNXdwOWp0N3duNnN3MmI0bmx6cHBidSZlcD12MV9naWZzX3NlYXJjaCZjdD1n/VbKLOdvCxBFNZpYvhL/giphy.gif",
+                "https://tenor.com/cJenZQGlLlb.gif",
+                "https://tenor.com/o0DguNIAzOw.gif",
+                "https://tenor.com/flnyH8fjLs0.gif",
+                "https://tenor.com/fFBzgygd0px.gif",
+                "https://tenor.com/bzPv0.gif",
+                "https://tenor.com/o1KqEo65DMk.gif",
+                "https://tenor.com/bwOux.gif",
+                "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExOXoxcDE1c3M4eDZqcTBuN25xdXV6dXVvazV3cmczZ3RjOWs0M3lwOSZlcD12MV9naWZzX3NlYXJjaCZjdD1n/A5ffIYwJoEpVcMOYiO/giphy.gif",
+                "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExOXoxcDE1c3M4eDZqcTBuN25xdXV6dXVvazV3cmczZ3RjOWs0M3lwOSZlcD12MV9naWZzX3NlYXJjaCZjdD1n/OQGQhQwdGQ5dQzOb8h/giphy.gif",
+                "https://media.giphy.com/media/v1.Y2lkPWVjZjA1ZTQ3cGd1cjJ2NTg2ZGhsZzUwbWhsazh4NWk3em1sa3h1eDZrYTVua3BoNiZlcD12MV9naWZzX3NlYXJjaCZjdD1n/lerDGzJj9UpkfnNFrc/giphy.gif",
+                "https://media.giphy.com/media/v1.Y2lkPWVjZjA1ZTQ3Y2QxeWZ6NHdqOGJ4ZG05emtsZWgwMndhd3d6M3RsYjFsY3Npb2U2MiZlcD12MV9naWZzX3NlYXJjaCZjdD1n/3u1ddaqmS8VL2aAJ31/giphy.gif",
+
+
             ],
             "Night": [
                 "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExNXVteWVlaWh6cHoxenptZW9uZjZ0YmF2NWQybHV1M2l5dzcyM3JwcSZlcD12MV9naWZzX3NlYXJjaCZjdD1n/Zf7L4QMWo3RkI/giphy.gif",
-                "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExNXVteWVlaWh6cHoxenptZW9uZjZ0YmF2NWQybHV1M2l5dzcyM3JwcSZlcD12MV9naWZzX3NlYXJjaCZjdD1n/l5JbspfwZ0yjHjlJ0K/giphy.gif"
-            ]
+                "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExNXVteWVlaWh6cHoxenptZW9uZjZ0YmF2NWQybHV1M2l5dzcyM3JwcSZlcD12MV9naWZzX3NlYXJjaCZjdD1n/l5JbspfwZ0yjHjlJ0K/giphy.gif",
+                "https://media1.tenor.com/m/mHIyos8O8McAAAAd/drapes-purple.gif",
+                "https://media1.tenor.com/m/3e5xTKIkoJYAAAAd/aesthetic-anime.gif",
+                "https://media1.tenor.com/m/lX7BjRlqi8MAAAAd/lofi.gif",
+                "https://media1.tenor.com/m/rDWAbi_iMRwAAAAd/moon-anime.gif",
+                "https://media1.tenor.com/m/eawU1m28QAYAAAAd/garden-of-words-anime.gif",
+                "https://tenor.com/bNDUV.gif",
+                "https://tenor.com/bxjGW.gif",
+                "https://tenor.com/1x3o.gif",
+                "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExM25ydnhld2tyc3BycTcyMDJ5Mm9jODV6cWZ0dnpubGV6d3g1bXAzNiZlcD12MV9naWZzX3NlYXJjaCZjdD1n/Zf7L4QMWo3RkI/giphy.gif",
+                "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExbWE4cmVtZXR6aGRraHZsaWx0djkzdHN6M2F4eXpvZ293ZXJyNHdiYSZlcD12MV9naWZzX3NlYXJjaCZjdD1n/b29IZK1dP4aWs/giphy.gif",
+                "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExbWE4cmVtZXR6aGRraHZsaWx0djkzdHN6M2F4eXpvZ293ZXJyNHdiYSZlcD12MV9naWZzX3NlYXJjaCZjdD1n/3gTmgzy7wYJfyaGRHQ/giphy.gif",
+                "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExcTl4dDE2cjN2Zmxka2RiMXZ5cXVlbTd0Y3djMXhhdDFiYmdqaHFteSZlcD12MV9naWZzX3NlYXJjaCZjdD1n/Id71NFYfSBOKv2IexE/giphy.gif",
+                "https://media.giphy.com/media/v1.Y2lkPWVjZjA1ZTQ3ZWQ4cmkxN2hya2xxbWMxZWRmbzF1c3pqdGV2c2puanN2MGpxODR0cSZlcD12MV9naWZzX3NlYXJjaCZjdD1n/NsjutwzYUp12YP6mbh/giphy.gif",
+                "https://media.giphy.com/media/v1.Y2lkPWVjZjA1ZTQ3Y3JkNWk1dnJ4a2tobG4ybmllM3dpM2l2aGpheHB4eG5iOWVkMzZ0aiZlcD12MV9naWZzX3NlYXJjaCZjdD1n/Fzt6LL05lletW/giphy.gif",
+                "https://tenor.com/bURrj.gif",
+                "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExMG1hN2JodHV6Z2RtZDVlYjRqZzk3MDJoMmEwaWdjYThmYnQwOWh0cyZlcD12MV9naWZzX3NlYXJjaCZjdD1n/wjjvv8CEWSdAcdlgtP/giphy.gif",
+                "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExMG1hN2JodHV6Z2RtZDVlYjRqZzk3MDJoMmEwaWdjYThmYnQwOWh0cyZlcD12MV9naWZzX3NlYXJjaCZjdD1n/E8GfFH47PKeyI/giphy.gif",
+                "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExMDI3dzdzbXQxbnNvcnE0cTYycGI4YTdkYnUzeTRxamlpOTR2YXc3dSZlcD12MV9naWZzX3NlYXJjaCZjdD1n/mjTpgz6FGNVDoMg5lx/giphy.gif",
+                "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExMDI3dzdzbXQxbnNvcnE0cTYycGI4YTdkYnUzeTRxamlpOTR2YXc3dSZlcD12MV9naWZzX3NlYXJjaCZjdD1n/j3mdQpQ9SKxFOWs9gy/giphy.gif",
+                "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExMDI3dzdzbXQxbnNvcnE0cTYycGI4YTdkYnUzeTRxamlpOTR2YXc3dSZlcD12MV9naWZzX3NlYXJjaCZjdD1n/Wm9XlKG2xIMiVcH4CP/giphy.gif",
+                "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExMDI3dzdzbXQxbnNvcnE0cTYycGI4YTdkYnUzeTRxamlpOTR2YXc3dSZlcD12MV9naWZzX3NlYXJjaCZjdD1n/AFZiEftZJS6qLsyODL/giphy.gif",
+                "https://media.giphy.com/media/v1.Y2lkPWVjZjA1ZTQ3bmppZ3F5aWs1dnQ4aXpkNXg2bXp1aHdwcDczdHhscGc1eTNzems5byZlcD12MV9naWZzX3JlbGF0ZWQmY3Q9Zw/UT5C4hCvmlSzJ7QeQy/giphy.gif",
+                "https://media.giphy.com/media/v1.Y2lkPWVjZjA1ZTQ3bmppZ3F5aWs1dnQ4aXpkNXg2bXp1aHdwcDczdHhscGc1eTNzems5byZlcD12MV9naWZzX3JlbGF0ZWQmY3Q9Zw/fVsVfxVwz40I24GT7X/giphy.gif",
+                "https://media.giphy.com/media/v1.Y2lkPWVjZjA1ZTQ3bmppZ3F5aWs1dnQ4aXpkNXg2bXp1aHdwcDczdHhscGc1eTNzems5byZlcD12MV9naWZzX3JlbGF0ZWQmY3Q9Zw/WoR3wMdCAHd2r8y19d/giphy.gif",
+                "https://media.giphy.com/media/v1.Y2lkPWVjZjA1ZTQ3Zzg4cjJuZjc3aWNtMnU0dHhja2JtenF2ZTU4dmRrMWNtanM5N2NzcSZlcD12MV9naWZzX3JlbGF0ZWQmY3Q9Zw/hSpRpdP46ETIXXWajD/giphy.gif",
+                "https://media.giphy.com/media/v1.Y2lkPWVjZjA1ZTQ3Zzg4cjJuZjc3aWNtMnU0dHhja2JtenF2ZTU4dmRrMWNtanM5N2NzcSZlcD12MV9naWZzX3JlbGF0ZWQmY3Q9Zw/UVHCnps6XrLm2vLDHq/giphy.gif",
+                "https://media.giphy.com/media/v1.Y2lkPWVjZjA1ZTQ3bGJ2cmN4N3ByNTV6OHRqdHc0aTFmN2UyNGg2Y3I2bWR5OTl0aHd4aSZlcD12MV9naWZzX3JlbGF0ZWQmY3Q9Zw/jRfJxezP5Jt2uiZaK0/giphy.gif0",
 
+
+
+
+
+                "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExNzcwOGd6cGFqYmhxYWxrdnF3NTg5dHhhejVlaXhibXE2cjJpa3NlYiZlcD12MV9naWZzX3NlYXJjaCZjdD1n/8VEpd4oZjDq5a/giphy.gif",
+                "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExMzRxYmEzcGxmaHBxc2RtZDFkbXZ5MWcxM25hZGRoMWlwdXkyYjF1YiZlcD12MV9naWZzX3NlYXJjaCZjdD1n/1fnu914Z79qQpVi2xZ/giphy.gif",
+                "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExMzRxYmEzcGxmaHBxc2RtZDFkbXZ5MWcxM25hZGRoMWlwdXkyYjF1YiZlcD12MV9naWZzX3NlYXJjaCZjdD1n/xRioxTFsS7LZWxrC5u/giphy.gif",
+                "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExMzRxYmEzcGxmaHBxc2RtZDFkbXZ5MWcxM25hZGRoMWlwdXkyYjF1YiZlcD12MV9naWZzX3NlYXJjaCZjdD1n/L2HuVpmuQhK3nu2vfz/giphy.gif",
+                "https://tenor.com/dSyvSP4cdHC.gif",
+                "https://tenor.com/bg4kZ.gif",
+                "https://tenor.com/bTu3b.gif",
+                "https://tenor.com/mPfNKknJfd2.gif",
+                "https://tenor.com/bkNqF.gif",
+                "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExd3FsbWN0MXU2YnpyYWdvbjdyZTExOXA0YjF2M2NocG9tdHBicGh5bSZlcD12MV9naWZzX3NlYXJjaCZjdD1n/t7Qb8655Z1VfBGr5XB/giphy.gif",
+                "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExd3FsbWN0MXU2YnpyYWdvbjdyZTExOXA0YjF2M2NocG9tdHBicGh5bSZlcD12MV9naWZzX3NlYXJjaCZjdD1n/35EHbc0PtTJGh3uOoA/giphy.gif",
+                "https://tenor.com/bIAex.gif",
+                "https://tenor.com/bpcfm.gif",
+                "https://tenor.com/bVFib.gif",
+                "https://tenor.com/cpJw6JgTKB6.gif",
+                "https://tenor.com/qcfJOS2T3Ip.gif",
+                "https://tenor.com/9VZ2.gif",
+
+            ]
         };
+
         const available = gifs[slot] || [];
         return available[Math.floor(Math.random() * available.length)];
     };
 
     const timeSlot = getTimeSlot();
-    const gifUrl = getRandomGif(timeSlot);
+    const [gifUrl, setGifUrl] = React.useState(getRandomGif(timeSlot));
+    const [spotifySrc, setSpotifySrc] = React.useState("https://open.spotify.com/embed/playlist/4Npjy1i9ibChS6uAFNtuZD?utm_source=generator");
+    const [hovering, setHovering] = React.useState(false);
+
+    const spotifyPlaylists = [
+        "https://open.spotify.com/embed/playlist/4Npjy1i9ibChS6uAFNtuZD",
+        "https://open.spotify.com/embed/playlist/37i9dQZF1DX0SM0LYsmbMT",
+        "https://open.spotify.com/embed/playlist/37i9dQZF1DWU0ScTcjJBdj",
+        "https://open.spotify.com/embed/playlist/37i9dQZF1DX4PP3DA4J0N8?"
+        
+        
+    ];
+
+    const shuffleSpotify = () => {
+        const next = spotifyPlaylists[Math.floor(Math.random() * spotifyPlaylists.length)];
+        setSpotifySrc(next + "?utm_source=generator");
+    };
 
     const containerStyle = {
         display: "grid",
@@ -511,13 +758,14 @@ const Restaurants = () => {
         display: "flex",
         flexDirection: "column",
         alignItems: "center",
-        padding: "10px"
+        padding: "10px",
+        cursor: "pointer"
     };
 
     const mediaWrapperStyle = {
         position: "relative",
         width: "100%",
-        paddingBottom: "56.25%", // 16:9 aspect ratio
+        paddingBottom: "56.25%",
         height: 0,
         overflow: "hidden",
         borderRadius: "12px",
@@ -544,28 +792,55 @@ const Restaurants = () => {
         borderRadius: "12px"
     };
 
+    const diceStyle = {
+        position: "absolute",
+        top: "-8px",
+        left: "-8px",
+        background: "rgba(0,0,0,0.7)",
+        padding: "6px 10px",
+        fontSize: "16px",
+        borderRadius: "8px",
+        zIndex: 1,
+        cursor: "pointer",
+        opacity: hovering ? 1 : 0,
+        transition: "opacity 0.3s"
+    };
+
+    const refreshGif = () => {
+        setGifUrl(getRandomGif(timeSlot));
+    };
+
     return React.createElement("div", { style: containerStyle }, [
 
-        // 🎵 Spotify Tile
+        // 🎵 Spotify Tile with Dice
         React.createElement("div", {
             key: "spotify-tile",
-            style: cardStyle
-        },
-            
+            style: cardStyle,
+            onMouseEnter: () => setHovering(true),
+            onMouseLeave: () => setHovering(false)
+        }, [
+            React.createElement("div", {
+                style: diceStyle,
+                onClick: (e) => {
+                    e.stopPropagation();
+                    shuffleSpotify();
+                }
+            }, "🎲"),
             React.createElement("div", { style: mediaWrapperStyle },
                 React.createElement("iframe", {
                     style: iframeStyle,
-                    src: "https://open.spotify.com/embed/playlist/4Npjy1i9ibChS6uAFNtuZD?utm_source=generator",
+                    src: spotifySrc,
                     allow: "autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture",
                     loading: "lazy"
                 })
             )
-        ),
+        ]),
 
         // 🖼️ GIF Tile
         React.createElement("div", {
             key: "gif-tile",
-            style: cardStyle
+            style: cardStyle,
+            onClick: refreshGif
         },
             React.createElement("div", { style: mediaWrapperStyle },
                 React.createElement("img", {
@@ -583,49 +858,104 @@ const Restaurants = () => {
 
 
 
-
 const Movies = () => {
     const getMovies = () => {
         return [{
-                desc: "A tale of some people watching over a large portion of space.",
-                id: 1,
-                icon: "fa-solid fa-galaxy",
-                image: "https://images.unsplash.com/photo-1596727147705-61a532a659bd?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8bWFydmVsfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60",
-                title: "Protectors of the Milky Way"
-            }, {
-                desc: "Some people leave their holes to disrupt some things.",
-                id: 2,
-                icon: "fa-solid fa-hat-wizard",
-                image: "https://images.unsplash.com/photo-1535666669445-e8c15cd2e7d9?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8bG9yZCUyMG9mJTIwdGhlJTIwcmluZ3N8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60",
-                title: "Hole People"
-            }, {
-                desc: "A boy with a dent in his head tries to stop a bad guy. And by bad I mean bad at winning.",
-                id: 3,
-                icon: "fa-solid fa-broom-ball",
-                image: "https://images.unsplash.com/photo-1632266484284-a11d9e3a460a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTZ8fGhhcnJ5JTIwcG90dGVyfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60",
-                title: "Pot of Hair"
-            }, {
-                desc: "A long drawn out story of some people fighting over some space. Cuz there isn't enough of it.",
-                id: 4,
-                icon: "fa-solid fa-starship-freighter",
-                image: "https://images.unsplash.com/photo-1533613220915-609f661a6fe1?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8c3RhciUyMHdhcnN8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60",
-                title: "Area Fights"
-            }].map((movie) => {
-            const styles = {
-                backgroundImage: `url(${movie.image})`
-            };
+            id: 1,
+            title: "GATE 2025 Syllabus",
+            icon: "fa-solid fa-galaxy",
+            pdf: "https://gate2025.iitr.ac.in/doc/2025/GATE%20_CS_2025_Syllabus.pdf"
+        }, {
+            id: 2,
+            title: "2-1 JNTUK R23 Syllabus",
+            icon: "fa-solid fa-hat-wizard",
+            pdf: "file:///C:/Users/surya/Downloads/R23-II-Year-Syllabus-CSE.pdf"
+        }, {
+            id: 3,
+            title: "People",
+            icon: "fa-solid fa-hat-wizard",
+            pdf: "file:///C:/Users/surya/Downloads/R23-II-Year-Syllabus-CSE.pdf"
+        }].map((movie) => {
             const id = `movie-card-${movie.id}`;
-            return (React.createElement("div", { key: movie.id, id: id, className: "movie-card" },
-                React.createElement("div", { className: "movie-card-background background-image", style: styles }),
-                React.createElement("div", { className: "movie-card-content" },
-                    React.createElement("div", { className: "movie-card-info" },
-                        React.createElement("span", { className: "movie-card-title" }, movie.title),
-                        React.createElement("span", { className: "movie-card-desc" }, movie.desc)),
-                    React.createElement("i", { className: movie.icon }))));
+
+            const pdfTile = React.createElement("div", {
+                key: id,
+                id,
+                style: {
+                    position: "relative",
+                    width: "100%",
+                    overflow: "hidden",
+                    borderRadius: "12px",
+                    boxShadow: "0 0 10px rgba(0,0,0,0.15)",
+                    marginBottom: "8px",
+                }
+            },
+                React.createElement("iframe", {
+                    src: `${movie.pdf}#toolbar=0`,
+                    width: "100%",
+                    height: "600px",
+                    style: {
+                        border: "1px solid #ccc",
+                        overflow: "auto"
+                    },
+                    title: movie.title
+                }),
+                React.createElement("button", {
+                    onClick: (e) => {
+                        e.stopPropagation();
+                        window.open(movie.pdf, "_self");
+                    },
+                    style: {
+                        position: "absolute",
+                        top: "10px",
+                        right: "10px",
+                        backgroundColor: "rgba(0, 0, 0, 0.7)",
+                        color: "#fff",
+                        border: "none",
+                        padding: "8px",
+                        borderRadius: "50%",
+                        fontSize: "16px",
+                        cursor: "pointer",
+                        zIndex: 2
+                    },
+                    title: "Open fullscreen"
+                },
+                    React.createElement("i", { className: "fa-solid fa-up-right-and-down-left-from-center" })
+                )
+            );
+
+            const titleBar = React.createElement("div", {
+                style: {
+                    textAlign: "left",
+                    marginTop: "6px",
+                    padding: "4px",
+                    fontSize: "15px",
+                    color: "#fff",
+                    fontFamily: "Rubik, sans-serif"
+                }
+            }, movie.title);
+
+            return React.createElement("div", {
+                style: {
+                    width: "100%",
+                    marginBottom: "30px"
+                }
+            }, pdfTile, titleBar);
         });
     };
-    return (React.createElement(MenuSection, { icon: "fa-solid fa-camera-movie", id: "movies-section", scrollable: true, title: "Popcorn time!" }, getMovies()));
+
+    return React.createElement(MenuSection, {
+        icon: "fa-solid fa-camera-movie",
+        id: "movies-section",
+        scrollable: true,
+        title: "Docs"
+    }, getMovies());
 };
+
+
+
+
+
 const UserStatusButton = (props) => {
     const { userStatus, setUserStatusTo } = React.useContext(AppContext);
     const handleOnClick = () => {
@@ -650,6 +980,9 @@ const Menu = () => {
                 React.createElement(Tools, null),
                 React.createElement(Movies, null)))));
 };
+
+
+
 const Background = () => {
     const { userStatus, setUserStatusTo } = React.useContext(AppContext);
     const handleOnClick = () => {
@@ -684,14 +1017,3 @@ ReactDOM.render(React.createElement(App, null), document.getElementById("root"))
 
 
 
-// 👇 Replace this selector with your actual unlock/dismiss button or event trigger
-const lockButton = document.querySelector('#unlock-btn'); // 🔁 your button ID/class
-
-if (lockButton) {
-  lockButton.addEventListener('click', () => {
-    setTimeout(() => {
-      // 👇 Scrolls smoothly to 1200px down the page. Adjust as needed
-      window.scrollTo({ top: 1200, behavior: 'smooth' });
-    }, 400); // small delay for animations/transitions if any
-  });
-}
