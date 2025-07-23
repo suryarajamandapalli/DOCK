@@ -160,7 +160,7 @@ body input, body h1, body h3, body a, body span {
   z-index: 1;
 }
 #app #app-background #app-background-image {
-  background-image: url("https://images.unsplash.com/photo-1483728642387-6c3bdd6c93e5?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2076&q=80");
+  background-image: url("https://w.wallhaven.cc/full/nr/wallhaven-nrjk1m.jpg");
   height: 100%;
   transition: filter 250ms, transform 250ms;
   width: 100%;
@@ -497,7 +497,7 @@ body input, body h1, body h3, body a, body span {
 }
 #app #movies-section .menu-section-content {
   display: flex;
-  gap: 1em;
+  gap: 1.5em;
 }
 #app #movies-section .menu-section-content #movie-card-1 .movie-card-content {
   background: linear-gradient(to top, rgba(57, 73, 171, 0.4), transparent, rgba(0, 0, 0, 0.4));
@@ -597,9 +597,13 @@ body input, body h1, body h3, body a, body span {
 #app #app-pin-wrapper #app-pin-label #app-pin-cancel-text {
   cursor: pointer;
   margin-left: 2px;
+  text-decoration: none;
+  color: #ffffff;
+  transition: .4s ease ;
 }
 #app #app-pin-wrapper #app-pin-label #app-pin-cancel-text:hover {
-  text-decoration: underline;
+  text-decoration: none;
+  color: red;
 }
 #app #app-pin-wrapper #app-pin-label #app-pin-error-text {
   color: #ef5350;
@@ -685,7 +689,7 @@ body input, body h1, body h3, body a, body span {
 }
 #app #app-menu #app-menu-content-wrapper {
   background: linear-gradient(to bottom, transparent, #1e1e1e);
-  margin-top: 30vh;
+  margin-top: 11vh;
   min-height: 80vh;
   padding: 80px;
   padding-top: 0px;
