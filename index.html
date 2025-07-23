@@ -7,6 +7,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1.0">
     <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500&amp;display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./style.css">
+    <link rel="icon" type="image/x-icon" href="Display.png">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
 
 </head>
 
@@ -24,7 +27,7 @@
                     <div class="app-pin-digit"><span class="app-pin-digit-value"></span></div>
                     <div class="app-pin-digit"><span class="app-pin-digit-value"></span></div>
                 </div>
-                <h3 id="app-pin-label">Enter PIN (1234)  <span id="app-pin-cancel-text">Cancel</span></h3></div>
+                <h3 id="app-pin-label"><span id="app-pin-cancel-text">Cancel</span></h3></div>
             <div id="app-menu">
                 <div id="app-menu-content-wrapper">
                     <div id="app-menu-content">
@@ -33,7 +36,7 @@
                                 <div id="app-menu-info" class="info"><span class="time">2:38</span><span class="weather"><i class="fa-duotone fa-sun" aria-hidden="true"></i><span class="weather-temperature-value">68</span><span class="weather-temperature-unit">°F</span></span>
                                 </div>
                                 <div class="reminder">
-                                    <div class="reminder-icon"><i class="fa-regular fa-bell" aria-hidden="true"></i></div><span class="reminder-text">Decisions are the key to the<span class="reminder-time"> Future</span></span>
+                                    <div class="reminder-icon"><i class="fa-regular fa-bell" aria-hidden="true"></i></div><span class="reminder-text">Decisions are the key to the Future<span class="reminder-time"></span></span>
                                 </div>
                             </div>
                             <div class="app-menu-content-header-section">
@@ -44,12 +47,11 @@
                         </div>
                         <div class="scrollable-component" id="quick-nav">
                             <div class="quick-nav-item clear-button"><span class="quick-nav-item-label">ChatGpt</span></div>
-                            <div class="quick-nav-item clear-button"><span class="quick-nav-item-label">Food</span></div>
-                            <div class="quick-nav-item clear-button"><span class="quick-nav-item-label">Apps</span></div>
-                            <div class="quick-nav-item clear-button"><span class="quick-nav-item-label">Movies</span></div>
-                        </div><a id="youtube-link" class="clear-button" href="https://www.youtube.com/c/Hyperplexed" target="_blank"><i class="fa-brands fa-youtube" aria-hidden="true"></i><span>Hyperplexed</span></a>
+                            <div class="quick-nav-item clear-button"><span class="quick-nav-item-label">Gemini</span></div>
+                            <div class="quick-nav-item clear-button"><span class="quick-nav-item-label">Perplexity</span></div>
+                            <div class="quick-nav-item clear-button"><span class="quick-nav-item-label">DeepSeek</span></div>
+                        </div>
                         <div id="weather-section" class="menu-section">
-                            <div class="menu-section-title"><i class="fa-solid fa-sun" aria-hidden="true"></i><span class="menu-section-title-text">How's it look out there?</span></div>
                             <div class="scrollable-component menu-section-content">
                                 <div class="day-card">
                                     <div class="day-card-content"><span class="day-weather-temperature">72<span class="day-weather-temperature-unit">°F</span></span><i class="day-weather-icon fa-duotone fa-sun sunny" aria-hidden="true"></i><span class="day-name">Mon</span></div>
@@ -75,26 +77,27 @@
                             </div>
                         </div>
                         <div id="restaurants-section" class="menu-section">
-                            <div class="menu-section-title"><i class="fa-regular fa-pot-food" aria-hidden="true"></i><span class="menu-section-title-text">Get it delivered!</span></div>
+                            <div class="menu-section-title"><i class="fa-regular fa-pot-food" aria-hidden="true"></i><span class="menu-section-title-text">My Goals</span></div>
                             <div class="menu-section-content">
-                                <div class="restaurant-card background-image" style="background-image: url(&quot;https://images.unsplash.com/photo-1606131731446-5568d87113aa?ixlib=rb-1.2.1&amp;ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8YnVyZ2Vyc3xlbnwwfHwwfHw%3D&amp;auto=format&amp;fit=crop&amp;w=500&amp;q=60&quot;);">
+                                <div class="restaurant-card background-image" style="background-image: url('https://w.wallhaven.cc/full/4l/wallhaven-4lk9kr.jpg');">
                                     <div class="restaurant-card-content">
-                                        <div class="restaurant-card-content-items"><span class="restaurant-card-title">Burgers</span><span class="restaurant-card-desc">The best burgers in town</span></div>
+                                        <div class="restaurant-card-content-items"><span class="restaurant-card-title">GOD</span><span class="restaurant-card-desc">Put God First</span></div>
                                     </div>
                                 </div>
-                                <div class="restaurant-card background-image" style="background-image: url(&quot;https://images.unsplash.com/photo-1576506295286-5cda18df43e7?ixlib=rb-1.2.1&amp;ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8aWNlJTIwY3JlYW18ZW58MHx8MHx8&amp;auto=format&amp;fit=crop&amp;w=500&amp;q=60&quot;);">
+                                <div class="restaurant-card background-image" style="background-image: url('https://plus.unsplash.com/premium_photo-1661400674151-11fd67f8b4ba?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');">
                                     <div class="restaurant-card-content">
-                                        <div class="restaurant-card-content-items"><span class="restaurant-card-title">Ice Cream</span><span class="restaurant-card-desc">The worst ice-cream around</span></div>
+                                        <div class="restaurant-card-content-items"><span class="restaurant-card-title">GATE</span><span class="restaurant-card-desc">Graduate Aptitude Test in Engineering</span></div>
                                     </div>
                                 </div>
-                                <div class="restaurant-card background-image" style="background-image: url(&quot;https://images.unsplash.com/photo-1590947132387-155cc02f3212?ixlib=rb-1.2.1&amp;ixid=MnwxMjA3fDB8MHxzZWFyY2h8Nnx8cGl6emF8ZW58MHx8MHx8&amp;auto=format&amp;fit=crop&amp;w=500&amp;q=60&quot;);">
+
+                                <div class="restaurant-card background-image" style="background-image: url('https://images.unsplash.com/photo-1629904853716-f0bc54eea481?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');">
                                     <div class="restaurant-card-content">
-                                        <div class="restaurant-card-content-items"><span class="restaurant-card-title">Pizza</span><span class="restaurant-card-desc">This 'Za be gettin down</span></div>
+                                        <div class="restaurant-card-content-items"><span class="restaurant-card-title">CTC</span><span class="restaurant-card-desc">Catch Sound CTC</span></div>
                                     </div>
                                 </div>
-                                <div class="restaurant-card background-image" style="background-image: url(&quot;https://images.unsplash.com/photo-1529193591184-b1d58069ecdd?ixlib=rb-1.2.1&amp;ixid=MnwxMjA3fDB8MHxzZWFyY2h8OXx8YmFyYmVxdWV8ZW58MHx8MHx8&amp;auto=format&amp;fit=crop&amp;w=500&amp;q=60&quot;);">
+                                <div class="restaurant-card background-image" style="background-image: url('https://plus.unsplash.com/premium_photo-1661475916373-5aaaeb4a5393?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8ZmFtaWx5fGVufDB8fDB8fHww');">
                                     <div class="restaurant-card-content">
-                                        <div class="restaurant-card-content-items"><span class="restaurant-card-title">BBQ</span><span class="restaurant-card-desc">BBQ ain't need no rhyme</span></div>
+                                        <div class="restaurant-card-content-items"><span class="restaurant-card-title">FAMILY</span><span class="restaurant-card-desc">Love My Family</span></div>
                                     </div>
                                 </div>
                             </div>
