@@ -303,7 +303,7 @@ const QuickNav = () => {
 
             {
                 id: 8,
-                label: # Gmail",
+                label:  Gmail",
                 href: "https://mail.google.com/mail/?tab=rm&ogbl",
                 icon: "https://ssl.gstatic.com/ui/v1/icons/mail/rfr/gmail.ico"
             }
