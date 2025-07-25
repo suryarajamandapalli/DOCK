@@ -258,52 +258,52 @@ const QuickNav = () => {
         const items = [
             {
                 id: 1,
-                label: "| ChatGpt",
+                label: " ChatGpt",
                 href: "https://chat.openai.com/",
                 icon: "https://chat.openai.com/favicon.ico",
             },
             {
                 id: 2,
-                label: "| Gemini",
+                label: " Gemini",
                 href: "https://gemini.google.com/",
                 icon: "https://registry.npmmirror.com/@lobehub/icons-static-png/1.56.0/files/dark/gemini-color.png",
             },
             {
                 id: 3,
-                label: "| Perplexity",
+                label: " Perplexity",
                 href: "https://www.perplexity.ai/",
                 icon: "https://www.perplexity.ai/favicon.ico"
             },
             {
                 id: 4,
-                label: "| DeepSeek",
+                label: " DeepSeek",
                 href: "https://chat.deepseek.com/",
                 icon: "https://www.deepseek.com/favicon.ico"
             },
             {
                 id: 5,
-                label: "| WhatsApp",
+                label: " WhatsApp",
                 href: "https://web.whatsapp.com/",
                 icon: "whatsapp.png"
             },
 
             {
                 id: 6,
-                label: "| GitHub",
+                label: " GitHub",
                 href: "https://github.com/suryarajamandapalli",
                 icon: "https://github.githubassets.com/assets/pinned-octocat-093da3e6fa40.svg"
             },
 
                         {
                 id: 7,
-                label: "| YouTube",
+                label: " YouTube",
                 href: "https://www.youtube.com/",
                 icon: "https://www.youtube.com/s/desktop/493698c2/img/logos/favicon_144x144.png"
             },
 
             {
                 id: 8,
-                label: "| Gmail",
+                label: # Gmail",
                 href: "https://mail.google.com/mail/?tab=rm&ogbl",
                 icon: "https://ssl.gstatic.com/ui/v1/icons/mail/rfr/gmail.ico"
             }
